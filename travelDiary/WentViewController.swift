@@ -8,7 +8,8 @@
 
 import UIKit
 
-class WentViewController: UIViewController {
+
+class WentViewController: UIViewController , UITextFieldDelegate{
 
     
     // スクロールビューのデータを入れるための変数
@@ -36,11 +37,22 @@ class WentViewController: UIViewController {
     // UIImageViewのインスタンス化
     let imageView = UIImageView()
     
+    // 写真選択ボタンのインスタンス化
+    @IBOutlet weak var chooseBtn: UIButton!
+    
+    // 決定ボタンのインスタンス化
+    @IBOutlet weak var decideBtn: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let placeTextFieldHeight:CGFloat = 50
+        let datePickerViewHeight:CGFloat = 130
+        let persontextfieldHeight:CGFloat = 50
+        let detailTextViewHeight:CGFloat = 120
+        let imageViewHeight:CGFloat = 400
+        
         // UIScrollVIewのインスタンス化
         scrollView = UIScrollView()
         
@@ -59,38 +71,51 @@ class WentViewController: UIViewController {
         placeLabel.frame = CGRect(x: 20, y: 20, width: screenWidth - 40, height: 40)
 
         
-        // プロパティ追加
+        // 場所textプロパティ追加
         placeTextField.backgroundColor = .orange
-        placeTextField.frame = CGRect(x: 20, y: 60, width: screenWidth - 40, height: 50)
-        
+        placeTextField.frame = CGRect(x: 20, y: 62, width: screenWidth - 40, height: placeTextFieldHeight)
+         placeTextField.font = UIFont.systemFont(ofSize: 20)
         
         // 日時labelプロパティ
         dateLabel.text = "日時"
-        dateLabel.frame = CGRect(x: 20, y: 110, width: screenWidth - 40, height: 40)
+        dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 67, width: screenWidth - 40, height: 40)
         
-        
-        datePicker.frame = CGRect(x: 20, y: 150, width: screenWidth - 40, height: 130)
+        // datePickerのプロパティ
+        datePicker.frame = CGRect(x: 20, y: placeTextFieldHeight + 109, width: screenWidth - 40, height: datePickerViewHeight)
+        datePicker.datePickerMode = .date
         
         // 一緒に行った人labelプロパティ
         personLabel.text = "行った人"
-        personLabel.frame = CGRect(x: 20, y: 260, width: screenWidth - 40, height: 40)
+        personLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 114, width: screenWidth - 40, height: 40)
         
         // 一緒に行った人textFieldプロパティ
         personTextField.backgroundColor = .orange
-        personTextField.frame = CGRect(x: 20, y: 300, width: screenWidth - 40, height: 50)
+        personTextField.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 156, width: screenWidth - 40, height: persontextfieldHeight)
+        personTextField.font = UIFont.systemFont(ofSize: 20)
         
-        // 詳細プロパティ
+        // 詳細ラベルプロパティ
         detailLabel.text = "詳細"
-        detailLabel.frame = CGRect(x: 20, y: 350, width: screenWidth - 40, height: 40)
+        detailLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 161, width: screenWidth - 40, height: 40)
         
         detailTextView.backgroundColor = .orange
-        detailTextView.frame = CGRect(x: 20, y: 390, width: screenWidth - 40, height: 120)
+        detailTextView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 203, width: screenWidth - 40, height: detailTextViewHeight)
+        detailTextView.font = UIFont.systemFont(ofSize: 20)
+        
         
         // イメージ追加プロパティ
         picLabel.text = "写真"
-        picLabel.frame = CGRect(x: 20, y: 510, width: screenWidth - 40, height: 40)
+        picLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 208, width: screenWidth - 40, height: 40)
         
-        imageView.frame = CGRect(x: 20, y: 530, width: screenWidth - 40, height: 400)
+        
+        imageView.backgroundColor = .orange
+        imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 250, width: screenWidth - 40, height: imageViewHeight)
+        
+        // 写真追加のボタンのプロパティ
+        chooseBtn.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 208, width: screenWidth - 60, height: 40)
+        
+        // 決定ボタンのプロパティ
+        decideBtn.frame = CGRect(x: 110, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + imageViewHeight + 260, width: screenWidth - 200, height: 40)
+        
         
 
         // 各オブジェクトをビューに追加
@@ -104,14 +129,60 @@ class WentViewController: UIViewController {
         scrollView.addSubview(detailTextView)
         scrollView.addSubview(picLabel)
         scrollView.addSubview(imageView)
+        scrollView.addSubview(chooseBtn)
+        scrollView.addSubview(decideBtn)
         
         // UIScrollViewのコンテンツのサイズを指定
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 2)
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
         
         // ビューに追加
         self.view.addSubview(scrollView)
+    
         
     }
     
+    //画面が現れる時に表示
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
+    }
+
 
 }
+
+
+
+
+    //UIScrollViewの拡張
+    extension UIScrollView {
+        override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.endEditing(true)
+            print("touchesBegan")
+        }
+    }
+
+    //キーボード関連の関数をまとめる。
+    extension WentViewController{
+        
+        //キーボードが表示された時に呼ばれる
+        @objc func keyboardWillShow(notification: NSNotification) {
+            let insertHeight:CGFloat = 250
+            scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
+            let offset = CGPoint(x: 0, y: insertHeight)
+            scrollView.setContentOffset(offset, animated: true)
+            print("スクリーンのサイズをキーボードの高さ分伸ばし伸ばした分動かす。")
+        }
+        
+        //キーボードが閉じる時に呼ばれる
+        @objc func keyboardWillHide(notification: NSNotification) {
+            scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
+            print("元の大きさへ")
+        }
+        
+        
+        @objc func closeKeybord(_ sender:Any){
+            self.view.endEditing(true)
+        }
+    }
