@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42A69929C9E5B18B786BCEDC /* Pods_travelDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0426CFC1107BC3C2815353F5 /* Pods_travelDiary.framework */; };
 		935EB26421C8CCFA00CD1F1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB26321C8CCFA00CD1F1F /* AppDelegate.swift */; };
 		935EB26621C8CCFA00CD1F1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB26521C8CCFA00CD1F1F /* ViewController.swift */; };
 		935EB26921C8CCFA00CD1F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935EB26721C8CCFA00CD1F1F /* Main.storyboard */; };
@@ -15,9 +16,13 @@
 		935EB27121C8CCFB00CD1F1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935EB26F21C8CCFB00CD1F1F /* LaunchScreen.storyboard */; };
 		935EB29A21C8E08D00CD1F1F /* 名称未設定.png in Resources */ = {isa = PBXBuildFile; fileRef = 935EB29921C8E08D00CD1F1F /* 名称未設定.png */; };
 		935EB29C21C938DE00CD1F1F /* WentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB29B21C938DE00CD1F1F /* WentViewController.swift */; };
+		935EB2A021CB601900CD1F1F /* WantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB29F21CB601900CD1F1F /* WantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0426CFC1107BC3C2815353F5 /* Pods_travelDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_travelDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75FEF4C91218D8F96D032B42 /* Pods-travelDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-travelDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-travelDiary/Pods-travelDiary.release.xcconfig"; sourceTree = "<group>"; };
+		8DA7D4107072B4ED9A55CE91 /* Pods-travelDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-travelDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-travelDiary/Pods-travelDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		935EB26021C8CCFA00CD1F1F /* travelDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		935EB26321C8CCFA00CD1F1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		935EB26521C8CCFA00CD1F1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +33,7 @@
 		935EB27221C8CCFB00CD1F1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		935EB29921C8E08D00CD1F1F /* 名称未設定.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "名称未設定.png"; sourceTree = "<group>"; };
 		935EB29B21C938DE00CD1F1F /* WentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentViewController.swift; sourceTree = "<group>"; };
+		935EB29F21CB601900CD1F1F /* WantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A69929C9E5B18B786BCEDC /* Pods_travelDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +54,8 @@
 				935EB26221C8CCFA00CD1F1F /* travelDiary */,
 				935EB26121C8CCFA00CD1F1F /* Products */,
 				935EB29921C8E08D00CD1F1F /* 名称未設定.png */,
+				FB866F1E665EEA51D0B2A5B6 /* Pods */,
+				FB9CAD2297AD961F614B45B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,12 +74,30 @@
 				935EB26321C8CCFA00CD1F1F /* AppDelegate.swift */,
 				935EB26521C8CCFA00CD1F1F /* ViewController.swift */,
 				935EB26721C8CCFA00CD1F1F /* Main.storyboard */,
+				935EB29F21CB601900CD1F1F /* WantViewController.swift */,
 				935EB26D21C8CCFB00CD1F1F /* Assets.xcassets */,
 				935EB26F21C8CCFB00CD1F1F /* LaunchScreen.storyboard */,
 				935EB27221C8CCFB00CD1F1F /* Info.plist */,
 				935EB26A21C8CCFA00CD1F1F /* travelDiary.xcdatamodeld */,
 			);
 			path = travelDiary;
+			sourceTree = "<group>";
+		};
+		FB866F1E665EEA51D0B2A5B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DA7D4107072B4ED9A55CE91 /* Pods-travelDiary.debug.xcconfig */,
+				75FEF4C91218D8F96D032B42 /* Pods-travelDiary.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB9CAD2297AD961F614B45B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0426CFC1107BC3C2815353F5 /* Pods_travelDiary.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +107,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 935EB27521C8CCFB00CD1F1F /* Build configuration list for PBXNativeTarget "travelDiary" */;
 			buildPhases = (
+				AA98564912D60453FBEA8A02 /* [CP] Check Pods Manifest.lock */,
 				935EB25C21C8CCFA00CD1F1F /* Sources */,
 				935EB25D21C8CCFA00CD1F1F /* Frameworks */,
 				935EB25E21C8CCFA00CD1F1F /* Resources */,
@@ -140,6 +168,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AA98564912D60453FBEA8A02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-travelDiary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		935EB25C21C8CCFA00CD1F1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -147,6 +200,7 @@
 			files = (
 				935EB29C21C938DE00CD1F1F /* WentViewController.swift in Sources */,
 				935EB26C21C8CCFA00CD1F1F /* travelDiary.xcdatamodeld in Sources */,
+				935EB2A021CB601900CD1F1F /* WantViewController.swift in Sources */,
 				935EB26621C8CCFA00CD1F1F /* ViewController.swift in Sources */,
 				935EB26421C8CCFA00CD1F1F /* AppDelegate.swift in Sources */,
 			);
@@ -292,9 +346,11 @@
 		};
 		935EB27621C8CCFB00CD1F1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DA7D4107072B4ED9A55CE91 /* Pods-travelDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NR7R6M96FP;
 				INFOPLIST_FILE = travelDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,9 +365,11 @@
 		};
 		935EB27721C8CCFB00CD1F1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75FEF4C91218D8F96D032B42 /* Pods-travelDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NR7R6M96FP;
 				INFOPLIST_FILE = travelDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

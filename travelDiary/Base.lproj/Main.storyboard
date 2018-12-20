@@ -19,11 +19,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mi-LP-Hlb">
-                                <rect key="frame" x="267" y="557" width="62" height="43"/>
+                                <rect key="frame" x="260" y="557" width="77" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="行った！"/>
                                 <connections>
-                                    <segue destination="QKa-6V-QiF" kind="show" id="RfP-kE-B7a"/>
+                                    <segue destination="QKa-6V-QiF" kind="show" id="Bfq-PB-0oa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ace-YW-wLn">
+                                <rect key="frame" x="260" y="519" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="行きたい！">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ax3-NU-eyh" kind="show" id="2Lx-bP-3qq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -35,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOx-c2-3T0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3444" y="133.5832083958021"/>
+            <point key="canvasLocation" x="4383.1999999999998" y="133.5832083958021"/>
         </scene>
         <!--Went View Controller-->
         <scene sceneID="Izb-cF-g8r">
@@ -44,13 +55,54 @@
                     <view key="view" contentMode="scaleToFill" id="CJ7-OD-Rnx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lag-jW-Teb">
+                                <rect key="frame" x="164" y="511" width="46" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="決定！"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FW6-y8-JLL">
+                                <rect key="frame" x="74" y="366" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="写真追加"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ojT-pp-uyO"/>
                     </view>
+                    <connections>
+                        <outlet property="chooseBtn" destination="FW6-y8-JLL" id="PJK-1U-C1G"/>
+                        <outlet property="decideBtn" destination="Lag-jW-Teb" id="v2y-nP-xUT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8nc-1p-XRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4198" y="134"/>
+            <point key="canvasLocation" x="5136.8000000000002" y="133.5832083958021"/>
+        </scene>
+        <!--Want View Controller-->
+        <scene sceneID="GOf-ij-JVB">
+            <objects>
+                <viewController id="ax3-NU-eyh" customClass="WantViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gu8-Rm-7pw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dID-PE-ieh">
+                                <rect key="frame" x="164" y="541" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="決定！"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Uyu-xp-Bgs"/>
+                    </view>
+                    <connections>
+                        <outlet property="okBtn" destination="dID-PE-ieh" id="Uxy-t3-LNW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZX-fK-HOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4383" y="846"/>
         </scene>
         <!--Item-->
         <scene sceneID="0bu-uI-EG1">
@@ -64,30 +116,31 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Wk2-NE-OZU" kind="relationship" relationship="rootViewController" id="9Hy-Cx-fyf"/>
+                        <segue destination="sfq-e9-mS1" kind="relationship" relationship="rootViewController" id="I82-Mb-vgE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lnS-dl-Bz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1565.5999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2570" y="134"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="Vpz-7v-bHg">
+        <scene sceneID="FCn-fI-joZ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Wk2-NE-OZU" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="sfq-e9-mS1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Eb7-10-mvY"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ke0-0D-ebj">
+                    <navigationItem key="navigationItem" id="yaH-XL-yA0"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wry-6N-IMp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="u18-q3-FKs" kind="relationship" relationship="viewControllers" id="FVr-tC-p1w"/>
+                        <segue destination="u18-q3-FKs" kind="relationship" relationship="viewControllers" id="C4X-bw-Zyk"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VsA-Pc-jQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="er6-2U-KJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2504.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="3444" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

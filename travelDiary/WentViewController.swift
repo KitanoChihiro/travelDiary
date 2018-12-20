@@ -72,7 +72,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
 
         
         // 場所textプロパティ追加
-        placeTextField.backgroundColor = .orange
+        placeTextField.backgroundColor = .white
         placeTextField.frame = CGRect(x: 20, y: 62, width: screenWidth - 40, height: placeTextFieldHeight)
          placeTextField.font = UIFont.systemFont(ofSize: 20)
         
@@ -89,7 +89,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         personLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 114, width: screenWidth - 40, height: 40)
         
         // 一緒に行った人textFieldプロパティ
-        personTextField.backgroundColor = .orange
+        personTextField.backgroundColor = .white
         personTextField.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 156, width: screenWidth - 40, height: persontextfieldHeight)
         personTextField.font = UIFont.systemFont(ofSize: 20)
         
@@ -97,7 +97,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         detailLabel.text = "詳細"
         detailLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 161, width: screenWidth - 40, height: 40)
         
-        detailTextView.backgroundColor = .orange
+        detailTextView.backgroundColor = .white
         detailTextView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 203, width: screenWidth - 40, height: detailTextViewHeight)
         detailTextView.font = UIFont.systemFont(ofSize: 20)
         
@@ -107,7 +107,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         picLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 208, width: screenWidth - 40, height: 40)
         
         
-        imageView.backgroundColor = .orange
+        imageView.backgroundColor = .white
         imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 250, width: screenWidth - 40, height: imageViewHeight)
         
         // 写真追加のボタンのプロパティ

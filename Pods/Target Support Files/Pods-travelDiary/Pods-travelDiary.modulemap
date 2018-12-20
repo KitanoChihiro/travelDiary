@@ -1,0 +1,6 @@
+framework module Pods_travelDiary {
+  umbrella header "Pods-travelDiary-umbrella.h"
+
+  export *
+  module * { export * }
+}
