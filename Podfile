@@ -7,4 +7,11 @@ target 'travelDiary' do
 
   # Pods for travelDiary
 
+  # Pods for sampleFontAwesome
+  #使いたいライブラリのリストアップ
+  pod 'FontAwesome.swift'
+  pod 'YPImagePicker'
+  use_frameworks!
+  
+
 end

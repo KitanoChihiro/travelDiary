@@ -102,7 +102,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZX-fK-HOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4383" y="846"/>
+            <point key="canvasLocation" x="4383" y="1046"/>
+        </scene>
+        <!--Went Show View Controller-->
+        <scene sceneID="7Xa-4d-zpi">
+            <objects>
+                <viewController id="AeR-Hf-eeK" customClass="wentShowViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IAN-ou-Cge">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.80483706619999995" blue="0.50152197089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="8Rd-Hi-3qK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cb7-Bi-y8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5207" y="1045"/>
         </scene>
         <!--Item-->
         <scene sceneID="0bu-uI-EG1">

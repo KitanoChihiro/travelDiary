@@ -17,6 +17,7 @@
 		935EB29A21C8E08D00CD1F1F /* 名称未設定.png in Resources */ = {isa = PBXBuildFile; fileRef = 935EB29921C8E08D00CD1F1F /* 名称未設定.png */; };
 		935EB29C21C938DE00CD1F1F /* WentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB29B21C938DE00CD1F1F /* WentViewController.swift */; };
 		935EB2A021CB601900CD1F1F /* WantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB29F21CB601900CD1F1F /* WantViewController.swift */; };
+		935EB2E621D7507C00CD1F1F /* wentShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB2E521D7507C00CD1F1F /* wentShowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		935EB29921C8E08D00CD1F1F /* 名称未設定.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "名称未設定.png"; sourceTree = "<group>"; };
 		935EB29B21C938DE00CD1F1F /* WentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentViewController.swift; sourceTree = "<group>"; };
 		935EB29F21CB601900CD1F1F /* WantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantViewController.swift; sourceTree = "<group>"; };
+		935EB2E521D7507C00CD1F1F /* wentShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wentShowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				935EB26321C8CCFA00CD1F1F /* AppDelegate.swift */,
 				935EB26521C8CCFA00CD1F1F /* ViewController.swift */,
 				935EB26721C8CCFA00CD1F1F /* Main.storyboard */,
+				935EB2E521D7507C00CD1F1F /* wentShowViewController.swift */,
 				935EB29F21CB601900CD1F1F /* WantViewController.swift */,
 				935EB26D21C8CCFB00CD1F1F /* Assets.xcassets */,
 				935EB26F21C8CCFB00CD1F1F /* LaunchScreen.storyboard */,
@@ -111,6 +114,7 @@
 				935EB25C21C8CCFA00CD1F1F /* Sources */,
 				935EB25D21C8CCFA00CD1F1F /* Frameworks */,
 				935EB25E21C8CCFA00CD1F1F /* Resources */,
+				B2E343973AE79A9450EDF0A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +195,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B2E343973AE79A9450EDF0A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-travelDiary/Pods-travelDiary-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
+				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-travelDiary/Pods-travelDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -201,6 +233,7 @@
 				935EB29C21C938DE00CD1F1F /* WentViewController.swift in Sources */,
 				935EB26C21C8CCFA00CD1F1F /* travelDiary.xcdatamodeld in Sources */,
 				935EB2A021CB601900CD1F1F /* WantViewController.swift in Sources */,
+				935EB2E621D7507C00CD1F1F /* wentShowViewController.swift in Sources */,
 				935EB26621C8CCFA00CD1F1F /* ViewController.swift in Sources */,
 				935EB26421C8CCFA00CD1F1F /* AppDelegate.swift in Sources */,
 			);
