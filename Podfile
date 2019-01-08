@@ -12,6 +12,7 @@ target 'travelDiary' do
   pod 'FontAwesome.swift'
   pod 'YPImagePicker'
   use_frameworks!
+  pod 'RealmSwift'
   
 
 end

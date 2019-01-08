@@ -1,6 +1,11 @@
 PODS:
   - FontAwesome.swift (1.4.7)
   - PryntTrimmerView (3.0.0)
+  - Realm (3.13.0):
+    - Realm/Headers (= 3.13.0)
+  - Realm/Headers (3.13.0)
+  - RealmSwift (3.13.0):
+    - Realm (= 3.13.0)
   - SteviaLayout (4.4.0)
   - YPImagePicker (3.5.2):
     - PryntTrimmerView (~> 3.0.0)
@@ -8,21 +13,26 @@ PODS:
 
 DEPENDENCIES:
   - FontAwesome.swift
+  - RealmSwift
   - YPImagePicker
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FontAwesome.swift
     - PryntTrimmerView
+    - Realm
+    - RealmSwift
     - SteviaLayout
     - YPImagePicker
 
 SPEC CHECKSUMS:
   FontAwesome.swift: ed820aa59420c3c5e1b087afa3f3a78373fc5300
   PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
+  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
+  RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
   SteviaLayout: dd74d1abd127bbf0ce346ac9430441684fe427d0
   YPImagePicker: 26d5bf7bfe1cffd1c5eedea3ac60422b314e2a42
 
-PODFILE CHECKSUM: 2c43ead978953feb3270b5a4f43fb47f7eda93d0
+PODFILE CHECKSUM: 0c88735ea478c9f53666d38d45cb8b5cfdced3b4
 
 COCOAPODS: 1.5.3

@@ -60,6 +60,9 @@
                                 <rect key="frame" x="164" y="511" width="46" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="決定！"/>
+                                <connections>
+                                    <segue destination="AeR-Hf-eeK" kind="show" id="lc1-Gi-Nr2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FW6-y8-JLL">
                                 <rect key="frame" x="74" y="366" width="88" height="30"/>
@@ -88,9 +91,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dID-PE-ieh">
-                                <rect key="frame" x="164" y="541" width="46" height="30"/>
+                                <rect key="frame" x="164" y="534" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="決定！"/>
+                                <connections>
+                                    <segue destination="v5c-D7-vxQ" kind="show" id="FaK-be-Np0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,6 +109,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZX-fK-HOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4383" y="1046"/>
+        </scene>
+        <!--Want Table View Controller-->
+        <scene sceneID="p1g-l1-PMc">
+            <objects>
+                <viewController id="v5c-D7-vxQ" customClass="wantTableViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vLO-H3-j6C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="VnC-zf-gPO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FML-4C-vcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4383" y="1879"/>
         </scene>
         <!--Went Show View Controller-->
         <scene sceneID="7Xa-4d-zpi">
