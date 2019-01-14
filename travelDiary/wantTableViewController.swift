@@ -8,14 +8,30 @@
 
 import UIKit
 
-class wantTableViewController: UIViewController {
+
+class wantTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var tableView:UITableView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView = UITableView()
+        
 
         
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
 
 
 }
+
+

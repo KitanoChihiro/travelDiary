@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WantViewController: UIViewController {
     
@@ -48,6 +49,7 @@ class WantViewController: UIViewController {
     let thingsText = UITextView()
     let budgetText = UITextField()
     let budget2Text = UITextField()
+    
     
     
     
@@ -163,7 +165,26 @@ class WantViewController: UIViewController {
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
     }
     
+    @IBAction func okBtn(_ sender: Any) {
+        
+        // DB関数の呼び出し
+        let wantDetail = WantDetail()
+        
+        
+        // DBへのよ登録処理の関数の呼び出し
+        wantDetail.create(place: placeText.text!, date: datePicker.date, purpose: purposeText.text, comment: detailText.text, mLess: budgetText.text!, mUpper: budget2Text.text!)
+        // DBからデータを取得して呼び出す処理
+        wantDetail.readAll()
+        
+        print(wantDetail.wantDetail)
+        print("ボタン押した")
+        
+    }
 }
+
+
+
+
 
 //キーボード関連の関数をまとめる。
 extension WantViewController{
@@ -188,3 +209,60 @@ extension WantViewController{
         self.view.endEditing(true)
     }
 }
+
+class WantDetail: Object{
+    @objc dynamic var place = String()
+    @objc dynamic var date = Date()
+    @objc dynamic var purpose = String()
+    @objc dynamic var comment = String()
+    @objc dynamic var mLess = String()
+    @objc dynamic var mUpper = String()
+    
+    // 辞書型配列としてデータを登録
+    var wantDetail = [NSDictionary]()
+    
+    // DBに登録する
+    func create(place:String, date:Date, purpose:String, comment:String, mLess:String, mUpper:String){
+        
+        let realm = try!Realm()
+        
+        try! realm.write {
+            
+            // インスタンス化
+            let wantDetail = WantDetail()
+            wantDetail.place = place
+            wantDetail.date = date
+            wantDetail.purpose = purpose
+            wantDetail.comment = comment
+            wantDetail.mLess = mLess
+            wantDetail.mUpper = mUpper
+            
+            print(wantDetail)
+            
+            // レルムにデータを追加
+            realm.add(wantDetail)
+        }
+    }
+    
+    // DBからデータを読み込んで取得する
+    func readAll(){
+        self.wantDetail = []
+        
+        let realm = try! Realm()
+        let wantDetail = realm.objects(WantDetail.self)
+        for value in wantDetail{
+            let detail = ["place": value.place, "date": value.date, "purpose": value.purpose, "comment": value.comment, "mLess": value.mLess, "mUpper": value.mUpper] as NSDictionary
+
+            self.wantDetail.append(detail)
+        }
+    }
+    
+    // DBから全件消去する
+    func deleteAll(){
+        let realm = try! Realm()
+        try! realm.write(){
+            realm.delete(realm.objects(WantDetail.self))
+        }
+    }
+}
+
