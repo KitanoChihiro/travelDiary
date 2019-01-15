@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import YPImagePicker
 
 
 class WentViewController: UIViewController , UITextFieldDelegate{
-
+    
     
     // スクロールビューのデータを入れるための変数
     var scrollView:UIScrollView!
@@ -35,7 +36,11 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     let detailTextView = UITextView()
     
     // UIImageViewのインスタンス化
-    let imageView = UIImageView()
+    var imageView = UIImageView()
+    
+    
+    // インスタカメラロール
+    var willPostImage:UIImage!
     
     // 写真選択ボタンのインスタンス化
     @IBOutlet weak var chooseBtn: UIButton!
@@ -135,6 +140,21 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         // UIScrollViewのコンテンツのサイズを指定
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
         
+        
+        // インスタライクなカメラロール
+        //ナビゲーションバーの背景画像
+        let coloredImage = UIImage(named:"backImage.jpg")
+        UINavigationBar.appearance().setBackgroundImage(coloredImage, for: UIBarMetrics.default)
+        
+        //ナビゲーションバーのTextColor
+        //タイトル
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white ]
+        //左のボタン
+        UINavigationBar.appearance().tintColor = .white
+        
+        //ImagePickerの設定
+        YPImagePickerConfiguration()
+        
         // ビューに追加
         self.view.addSubview(scrollView)
     
@@ -149,10 +169,63 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
     }
 
-
+    
+    // 写真選択のボタンが押されたら
+    @IBAction func chooseBtn(_ sender: Any) {
+        let picker = YPImagePicker()
+        var image:UIImage!
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            
+            for item in items {
+                switch item {
+                case .photo(let photo):
+                    print("phote",photo.image)
+                    image = photo.image
+                case .video(let video):
+                    print("video",video)
+                }
+            }
+            
+            
+            if cancelled {
+                //「cansel」ボタンが押された時の処理
+                picker.dismiss(animated: true, completion: nil)
+                
+            }else{
+                //「Next」ボタンが押された時の処理
+                print("memo:次の画面に遷移します。")
+                self.imageView.image = image
+                // ピッカーを閉じる処理
+                picker.dismiss(animated: true, completion: nil)
+            }
+//            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //インスタ風ImagePickerの設定
+    func YPImagePickerConfig(){
+        var config = YPImagePickerConfiguration()
+        //ライブラリの写真を表示する際、1行に何枚写真を並べるか。
+        config.library.numberOfItemsInRow = 5
+        //どのスクリーンを最初に表示するか。
+        config.startOnScreen = .library
+        //ステータスバーを隠すかどうか
+        config.hidesStatusBar = false
+        //ナビゲーションの右側のボタン「Next」
+        config.colors.tintColor = .blue
+        
+        config.library.maxNumberOfItems = 10
+        //上記設定
+        YPImagePickerConfiguration.shared = config
+    }
+    
 }
-
-
 
 
     //UIScrollViewの拡張

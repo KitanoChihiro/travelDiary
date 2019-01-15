@@ -11,8 +11,8 @@ target 'travelDiary' do
   #使いたいライブラリのリストアップ
   pod 'FontAwesome.swift'
   pod 'YPImagePicker'
-  use_frameworks!
-  pod 'RealmSwift'
   
+  pod 'RealmSwift'
+  use_frameworks!
 
 end

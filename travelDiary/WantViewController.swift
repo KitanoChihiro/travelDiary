@@ -8,10 +8,12 @@
 
 import UIKit
 import RealmSwift
+import YPImagePicker
 
 class WantViewController: UIViewController {
     
     @IBOutlet weak var okBtn: UIButton!
+    
     
     // スクロールビューのデータを入れるための変数
     var scrollView:UIScrollView!
