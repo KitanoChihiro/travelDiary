@@ -174,6 +174,8 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     @IBAction func chooseBtn(_ sender: Any) {
         let picker = YPImagePicker()
         var image:UIImage!
+        
+        YPImagePickerConfig()
         picker.didFinishPicking { [unowned picker] items, cancelled in
             
             for item in items {
@@ -211,6 +213,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     //インスタ風ImagePickerの設定
     func YPImagePickerConfig(){
         var config = YPImagePickerConfiguration()
+        let picker = YPImagePicker(configuration: config)
         //ライブラリの写真を表示する際、1行に何枚写真を並べるか。
         config.library.numberOfItemsInRow = 5
         //どのスクリーンを最初に表示するか。
@@ -219,10 +222,14 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         config.hidesStatusBar = false
         //ナビゲーションの右側のボタン「Next」
         config.colors.tintColor = .blue
-        
-        config.library.maxNumberOfItems = 10
+        // 一回の選択で選べる枚数の制限
+        config.library.maxNumberOfItems = 20
         //上記設定
         YPImagePickerConfiguration.shared = config
+        
+        
+        
+        
     }
     
 }
