@@ -219,9 +219,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         // ナビゲーションバーのカラーの変更[タイトル・キャンセルボタン]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black ] // Title color
         UINavigationBar.appearance().tintColor = .blue // Left. bar buttons
-        
-        
-        
+             
         //ライブラリの写真を表示する際、1行に何枚写真を並べるか。
         config.library.numberOfItemsInRow = 5
         //どのスクリーンを最初に表示するか。
@@ -232,15 +230,9 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         config.colors.tintColor = .blue
         // 一回の選択で選べる枚数の制限
         config.library.maxNumberOfItems = 20
-        
-        
-        
         //上記設定
         YPImagePickerConfiguration.shared = config
-        
-        
-        
-        
+      
     }
     
 }

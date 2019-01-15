@@ -40,10 +40,11 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         screenHeight = UIScreen.main.bounds.size.height
         
         // tableViewのインスタンス化
-        tableView = UITableView()
+//        tableView = UITableView()
 
         // カスタムセルのサイズを変更する
         tableView.rowHeight = 100
+        
         
         let tableViewWidth:CGFloat = 370
         let tableViewHeight:CGFloat = 650
@@ -56,11 +57,15 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         view.addSubview(tableView)
         
         // カスタムセルと紐付ける
-        tableView.register (UINib(nibName: "WantTableCellTableViewCell", bundle: nil),forCellReuseIdentifier: "cell")
+//        tableView.register (UINib(nibName: "WantTableCellTableViewCell", bundle: nil),forCellReuseIdentifier: "customcell")
+        let cellNib = WantTableCellTableViewCell.self
+        tableView.register(cellNib, forCellReuseIdentifier: "customecell")
+        tableView.reloadData()
     }
     
     // 何件表示するか
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(wantDetail.wantDetail.count)
         
         return wantDetail.wantDetail.count
     }
@@ -68,15 +73,16 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
     
     // セルの内容を決める
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("こんにちは")
         
         // カスタムセルのインスタンス化
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WantTableCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! WantTableCellTableViewCell
         
         // cellラベルの中に何を表示させるか
         cell.wantPlace.text = (wantDetail.wantDetail[indexPath.row]["place"] as! String)
         
         // Date型をString型に変更
-        // TODO: フォーマットをdatepickerと揃える
+        // TODO: 表示の仕方をdatepickerと揃える
         let changeDate = stringFromDate(date: wantDetail.wantDetail[indexPath.row]["date"] as! Date, format: "yyyy年MM月dd日")
         cell.wantDate.text = changeDate
         
