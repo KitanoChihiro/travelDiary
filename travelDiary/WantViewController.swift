@@ -60,6 +60,7 @@ class WantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         // UIScrollVIewのインスタンス化
         scrollView = UIScrollView()
         
@@ -174,7 +175,7 @@ class WantViewController: UIViewController {
         
         
         // DBへのよ登録処理の関数の呼び出し
-        wantDetail.create(place: placeText.text!, date: datePicker.date, purpose: purposeText.text, comment: detailText.text, mLess: budgetText.text!, mUpper: budget2Text.text!)
+        wantDetail.create(place: placeText.text!, date: datePicker.date, purpose: purposeText.text, comment: detailText.text, things: thingsText.text, mLess: budgetText.text!, mUpper: budget2Text.text!)
         // DBからデータを取得して呼び出す処理
         wantDetail.readAll()
         
@@ -217,6 +218,7 @@ class WantDetail: Object{
     @objc dynamic var date = Date()
     @objc dynamic var purpose = String()
     @objc dynamic var comment = String()
+    @objc dynamic var things = String()
     @objc dynamic var mLess = String()
     @objc dynamic var mUpper = String()
     
@@ -224,7 +226,7 @@ class WantDetail: Object{
     var wantDetail = [NSDictionary]()
     
     // DBに登録する
-    func create(place:String, date:Date, purpose:String, comment:String, mLess:String, mUpper:String){
+    func create(place:String, date:Date, purpose:String, comment:String, things:String, mLess:String, mUpper:String){
         
         let realm = try!Realm()
         
@@ -236,6 +238,7 @@ class WantDetail: Object{
             wantDetail.date = date
             wantDetail.purpose = purpose
             wantDetail.comment = comment
+            wantDetail.things = things
             wantDetail.mLess = mLess
             wantDetail.mUpper = mUpper
             
@@ -253,7 +256,7 @@ class WantDetail: Object{
         let realm = try! Realm()
         let wantDetail = realm.objects(WantDetail.self)
         for value in wantDetail{
-            let detail = ["place": value.place, "date": value.date, "purpose": value.purpose, "comment": value.comment, "mLess": value.mLess, "mUpper": value.mUpper] as NSDictionary
+            let detail = ["place": value.place, "date": value.date, "purpose": value.purpose, "comment": value.comment, "things": value.things, "mLess": value.mLess, "mUpper": value.mUpper] as NSDictionary
 
             self.wantDetail.append(detail)
         }
