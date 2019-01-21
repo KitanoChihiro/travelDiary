@@ -105,7 +105,6 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         return formatter.string(from: date)
     }
     
-    
     // セルが選択された時に行う処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

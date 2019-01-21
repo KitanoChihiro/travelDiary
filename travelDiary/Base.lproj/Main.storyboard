@@ -13,7 +13,7 @@
         <!--Item-->
         <scene sceneID="jdc-Wc-NeF">
             <objects>
-                <viewController id="u18-q3-FKs" sceneMemberID="viewController">
+                <viewController id="u18-q3-FKs" customClass="ViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yNS-mi-Y4n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="決定！"/>
                                 <connections>
-                                    <segue destination="AeR-Hf-eeK" kind="show" id="lc1-Gi-Nr2"/>
+                                    <action selector="okBtn:" destination="QKa-6V-QiF" eventType="touchUpInside" id="dIS-Vw-nH5"/>
+                                    <segue destination="6rr-AZ-yJb" kind="show" id="MiX-UB-55U"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FW6-y8-JLL">
@@ -85,7 +86,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8nc-1p-XRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VVj-ob-qrY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5136.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="5289" y="134"/>
+        </scene>
+        <!--Table Went View Controller-->
+        <scene sceneID="AKr-Ew-pCI">
+            <objects>
+                <viewController id="6rr-AZ-yJb" customClass="tableWentViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JsH-1j-LtE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Smb-mx-hTj"/>
+                    </view>
+                    <connections>
+                        <segue destination="AeR-Hf-eeK" kind="show" identifier="wentData" id="mMW-i6-YJV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wri-eA-Pgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6150" y="134"/>
         </scene>
         <!--Want View Controller-->
         <scene sceneID="GOf-ij-JVB">
@@ -126,10 +145,28 @@
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="yUP-r3-N4A"/>
                     </view>
+                    <connections>
+                        <segue destination="l7P-Ee-ggS" kind="show" identifier="wantData" id="TWQ-No-adF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qak-rg-twc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4370" y="1825"/>
+            <point key="canvasLocation" x="5289" y="1046"/>
+        </scene>
+        <!--Want Show View Controller-->
+        <scene sceneID="tuL-yN-TNb">
+            <objects>
+                <viewController id="l7P-Ee-ggS" customClass="WantShowViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sEQ-AD-xIQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="nmm-4p-YIb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aTG-EO-Cdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6150" y="1046"/>
         </scene>
         <!--Went Show View Controller-->
         <scene sceneID="7Xa-4d-zpi">
@@ -138,13 +175,13 @@
                     <view key="view" contentMode="scaleToFill" id="IAN-ou-Cge">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.80483706619999995" blue="0.50152197089999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="8Rd-Hi-3qK"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cb7-Bi-y8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5207" y="1045"/>
+            <point key="canvasLocation" x="7025" y="134"/>
         </scene>
         <!--Item-->
         <scene sceneID="0bu-uI-EG1">

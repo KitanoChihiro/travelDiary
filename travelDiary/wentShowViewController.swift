@@ -9,14 +9,13 @@
 import UIKit
 
 class wentShowViewController: UIViewController {
-
     // スクロールビューのデータを入れるための変数
     var scrollView:UIScrollView!
     
     // スクリーンのサイズを入れる変数を宣言
     var screenWidth:CGFloat!
     var screenHeight:CGFloat!
-    var datePicker:UIDatePicker!
+    var dateText:UITextField!
     
     // 各ラベルのインスタンス化
     let placeLabel = UILabel()
@@ -35,11 +34,19 @@ class wentShowViewController: UIViewController {
     // UIImageViewのインスタンス化
     let imageView = UIImageView()
     
+    // 前ページでこ送られてきたデータの型
+    var selctedIndex = -1
+    var selectedPlace:String!
+    var selectedDate:String!
+    var selectedperson:String!
+    var selectedcomment:String!
+    var selectedURL:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let placeTextFieldHeight:CGFloat = 50
-        let datePickerViewHeight:CGFloat = 130
+        let datePickerViewHeight:CGFloat = 50
         let persontextfieldHeight:CGFloat = 50
         let detailTextViewHeight:CGFloat = 120
         let imageViewHeight:CGFloat = 400
@@ -48,7 +55,7 @@ class wentShowViewController: UIViewController {
         scrollView = UIScrollView()
         
         // datePickerのインスタンス化
-        datePicker = UIDatePicker()
+        dateText = UITextField()
         
         //スクリーンのサイズ取得
         screenWidth = UIScreen.main.bounds.size.width
@@ -72,8 +79,9 @@ class wentShowViewController: UIViewController {
         dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 67, width: screenWidth - 40, height: 40)
         
         // datePickerのプロパティ
-        datePicker.frame = CGRect(x: 20, y: placeTextFieldHeight + 109, width: screenWidth - 40, height: datePickerViewHeight)
-        datePicker.datePickerMode = .date
+        dateText.frame = CGRect(x: 20, y: placeTextFieldHeight + 109, width: screenWidth - 40, height: datePickerViewHeight)
+        placeTextField.backgroundColor = .white
+        
         
         // 一緒に行った人labelプロパティ
         personLabel.text = "行った人"
@@ -109,7 +117,7 @@ class wentShowViewController: UIViewController {
         scrollView.addSubview(placeLabel)
         scrollView.addSubview(dateLabel)
         scrollView.addSubview(placeTextField)
-        scrollView.addSubview(datePicker)
+        scrollView.addSubview(dateText)
         scrollView.addSubview(personLabel)
         scrollView.addSubview(personTextField)
         scrollView.addSubview(detailLabel)
@@ -130,10 +138,20 @@ class wentShowViewController: UIViewController {
     //画面が現れる時に表示
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//
+//        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
+//        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
+//    }
         
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
-    }
+        placeTextField.text = selectedPlace
+        dateText.text = selectedDate
+        personTextField.text = selectedperson
+        detailTextView.text = selectedcomment
+        
+        // TODO:イメージビューを　StringからImageViewにする
+        // 複数表示を可能にする
+        // imageView.image = selectedURL
+        
     
     
 }
@@ -150,26 +168,26 @@ class wentShowViewController: UIViewController {
 //}
 
 //キーボード関連の関数をまとめる。
-extension wentShowViewController{
-    
-    //キーボードが表示された時に呼ばれる
-    @objc func keyboardWillShow(notification: NSNotification) {
-        let insertHeight:CGFloat = 250
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
-        let offset = CGPoint(x: 0, y: insertHeight)
-        scrollView.setContentOffset(offset, animated: true)
-        print("スクリーンのサイズをキーボードの高さ分伸ばし伸ばした分動かす。")
-    }
-    
-    //キーボードが閉じる時に呼ばれる
-    @objc func keyboardWillHide(notification: NSNotification) {
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
-        print("元の大きさへ")
-    }
-    
-    
-    @objc func closeKeybord(_ sender:Any){
-        self.view.endEditing(true)
-    }
+//extension wentShowViewController{
+//
+//    //キーボードが表示された時に呼ばれる
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        let insertHeight:CGFloat = 250
+//        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
+//        let offset = CGPoint(x: 0, y: insertHeight)
+//        scrollView.setContentOffset(offset, animated: true)
+//        print("スクリーンのサイズをキーボードの高さ分伸ばし伸ばした分動かす。")
+//    }
+//
+//    //キーボードが閉じる時に呼ばれる
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
+//        print("元の大きさへ")
+//    }
+//
+//
+//    @objc func closeKeybord(_ sender:Any){
+//        self.view.endEditing(true)
+//    }
 }
 

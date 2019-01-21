@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		42A69929C9E5B18B786BCEDC /* Pods_travelDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0426CFC1107BC3C2815353F5 /* Pods_travelDiary.framework */; };
+		933855A821EE1EE600EFE057 /* tableWentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933855A721EE1EE600EFE057 /* tableWentViewController.swift */; };
+		933855AA21EE21CD00EFE057 /* wentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933855A921EE21CD00EFE057 /* wentTableViewCell.swift */; };
+		933855CC21F065A400EFE057 /* WantShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933855CB21F065A400EFE057 /* WantShowViewController.swift */; };
 		9350E7F021E87E6A00909C96 /* WantTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9350E7EF21E87E6A00909C96 /* WantTableCellTableViewCell.swift */; };
 		9350E7F221EC166A00909C96 /* tableWantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9350E7F121EC166A00909C96 /* tableWantViewController.swift */; };
 		935EB26421C8CCFA00CD1F1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB26321C8CCFA00CD1F1F /* AppDelegate.swift */; };
@@ -26,6 +29,9 @@
 		0426CFC1107BC3C2815353F5 /* Pods_travelDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_travelDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FEF4C91218D8F96D032B42 /* Pods-travelDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-travelDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-travelDiary/Pods-travelDiary.release.xcconfig"; sourceTree = "<group>"; };
 		8DA7D4107072B4ED9A55CE91 /* Pods-travelDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-travelDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-travelDiary/Pods-travelDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		933855A721EE1EE600EFE057 /* tableWentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableWentViewController.swift; sourceTree = "<group>"; };
+		933855A921EE21CD00EFE057 /* wentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wentTableViewCell.swift; sourceTree = "<group>"; };
+		933855CB21F065A400EFE057 /* WantShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantShowViewController.swift; sourceTree = "<group>"; };
 		9350E7EE21E87E6A00909C96 /* WantTableCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WantTableCellTableViewCell.xib; path = /Users/kitanochihiro/Documents/iOS20181106_48batch/travelDiary/travelDiary/WantTableCellTableViewCell.xib; sourceTree = "<absolute>"; };
 		9350E7EF21E87E6A00909C96 /* WantTableCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WantTableCellTableViewCell.swift; path = /Users/kitanochihiro/Documents/iOS20181106_48batch/travelDiary/travelDiary/WantTableCellTableViewCell.swift; sourceTree = "<absolute>"; };
 		9350E7F121EC166A00909C96 /* tableWantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableWantViewController.swift; sourceTree = "<group>"; };
@@ -83,9 +89,12 @@
 				9350E7EE21E87E6A00909C96 /* WantTableCellTableViewCell.xib */,
 				935EB26521C8CCFA00CD1F1F /* ViewController.swift */,
 				935EB26721C8CCFA00CD1F1F /* Main.storyboard */,
+				933855CB21F065A400EFE057 /* WantShowViewController.swift */,
 				9350E7F121EC166A00909C96 /* tableWantViewController.swift */,
 				935EB2E521D7507C00CD1F1F /* wentShowViewController.swift */,
 				935EB29F21CB601900CD1F1F /* WantViewController.swift */,
+				933855A721EE1EE600EFE057 /* tableWentViewController.swift */,
+				933855A921EE21CD00EFE057 /* wentTableViewCell.swift */,
 				935EB26D21C8CCFB00CD1F1F /* Assets.xcassets */,
 				935EB26F21C8CCFB00CD1F1F /* LaunchScreen.storyboard */,
 				935EB27221C8CCFB00CD1F1F /* Info.plist */,
@@ -244,8 +253,11 @@
 			files = (
 				9350E7F021E87E6A00909C96 /* WantTableCellTableViewCell.swift in Sources */,
 				9350E7F221EC166A00909C96 /* tableWantViewController.swift in Sources */,
+				933855A821EE1EE600EFE057 /* tableWentViewController.swift in Sources */,
 				935EB29C21C938DE00CD1F1F /* WentViewController.swift in Sources */,
+				933855CC21F065A400EFE057 /* WantShowViewController.swift in Sources */,
 				935EB26C21C8CCFA00CD1F1F /* travelDiary.xcdatamodeld in Sources */,
+				933855AA21EE21CD00EFE057 /* wentTableViewCell.swift in Sources */,
 				935EB2A021CB601900CD1F1F /* WantViewController.swift in Sources */,
 				935EB2E621D7507C00CD1F1F /* wentShowViewController.swift in Sources */,
 				935EB26621C8CCFA00CD1F1F /* ViewController.swift in Sources */,
