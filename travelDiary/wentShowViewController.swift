@@ -73,14 +73,15 @@ class wentShowViewController: UIViewController {
         placeTextField.backgroundColor = .white
         placeTextField.frame = CGRect(x: 20, y: 62, width: screenWidth - 40, height: placeTextFieldHeight)
         placeTextField.font = UIFont.systemFont(ofSize: 20)
-        
+        // テキストの入力を不可にする
+        placeTextField.isEditable = false
         // 日時labelプロパティ
         dateLabel.text = "日時"
         dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 67, width: screenWidth - 40, height: 40)
         
-        // datePickerのプロパティ
+        // dateのプロパティ
         dateText.frame = CGRect(x: 20, y: placeTextFieldHeight + 109, width: screenWidth - 40, height: datePickerViewHeight)
-        placeTextField.backgroundColor = .white
+        dateText.backgroundColor = .white
         
         
         // 一緒に行った人labelプロパティ

@@ -23,6 +23,7 @@
 		935EB29C21C938DE00CD1F1F /* WentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB29B21C938DE00CD1F1F /* WentViewController.swift */; };
 		935EB2A021CB601900CD1F1F /* WantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB29F21CB601900CD1F1F /* WantViewController.swift */; };
 		935EB2E621D7507C00CD1F1F /* wentShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EB2E521D7507C00CD1F1F /* wentShowViewController.swift */; };
+		9367E13721F8370D0067F53C /* geocordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9367E13621F8370D0067F53C /* geocordingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		935EB29B21C938DE00CD1F1F /* WentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentViewController.swift; sourceTree = "<group>"; };
 		935EB29F21CB601900CD1F1F /* WantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantViewController.swift; sourceTree = "<group>"; };
 		935EB2E521D7507C00CD1F1F /* wentShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wentShowViewController.swift; sourceTree = "<group>"; };
+		9367E13621F8370D0067F53C /* geocordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geocordingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				9350E7EE21E87E6A00909C96 /* WantTableCellTableViewCell.xib */,
 				935EB26521C8CCFA00CD1F1F /* ViewController.swift */,
 				935EB26721C8CCFA00CD1F1F /* Main.storyboard */,
+				9367E13621F8370D0067F53C /* geocordingViewController.swift */,
 				933855CB21F065A400EFE057 /* WantShowViewController.swift */,
 				9350E7F121EC166A00909C96 /* tableWantViewController.swift */,
 				935EB2E521D7507C00CD1F1F /* wentShowViewController.swift */,
@@ -256,6 +259,7 @@
 				933855A821EE1EE600EFE057 /* tableWentViewController.swift in Sources */,
 				935EB29C21C938DE00CD1F1F /* WentViewController.swift in Sources */,
 				933855CC21F065A400EFE057 /* WantShowViewController.swift in Sources */,
+				9367E13721F8370D0067F53C /* geocordingViewController.swift in Sources */,
 				935EB26C21C8CCFA00CD1F1F /* travelDiary.xcdatamodeld in Sources */,
 				933855AA21EE21CD00EFE057 /* wentTableViewCell.swift in Sources */,
 				935EB2A021CB601900CD1F1F /* WantViewController.swift in Sources */,
