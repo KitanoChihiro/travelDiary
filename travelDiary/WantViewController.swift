@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import YPImagePicker
 
 class WantViewController: UIViewController {
     
@@ -42,6 +41,8 @@ class WantViewController: UIViewController {
     let yenFirstLabel = UILabel()
     let yenLastLabel = UILabel()
     
+    // マップサーチ画面に行く
+    @IBOutlet weak var searchBtn: UIButton!
     
     // 各text系のインスタンス化
     let placeText = UITextField()
@@ -52,15 +53,11 @@ class WantViewController: UIViewController {
     let budgetText = UITextField()
     let budget2Text = UITextField()
     
-    
-    
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        
+        
         // UIScrollVIewのインスタンス化
         scrollView = UIScrollView()
         
@@ -150,6 +147,7 @@ class WantViewController: UIViewController {
         scrollView.addSubview(budget2Text)
         scrollView.addSubview(yenLastLabel)
         scrollView.addSubview(okBtn)
+        scrollView.addSubview(searchBtn)
         
         
         // UIScrollViewのコンテンツのサイズを指定

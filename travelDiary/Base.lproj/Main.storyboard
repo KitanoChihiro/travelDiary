@@ -124,12 +124,21 @@
                                     <segue destination="w3t-1U-eAO" kind="show" id="ntT-c4-kNY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3S-89-Tq6">
+                                <rect key="frame" x="88" y="102" width="199" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="行きたい場所をマップで検索"/>
+                                <connections>
+                                    <segue destination="Nc9-FI-btT" kind="show" id="3vG-Oz-6zj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Uyu-xp-Bgs"/>
                     </view>
                     <connections>
                         <outlet property="okBtn" destination="dID-PE-ieh" id="Uxy-t3-LNW"/>
+                        <outlet property="searchBtn" destination="C3S-89-Tq6" id="e8r-GZ-9qd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZX-fK-HOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,6 +178,34 @@
             </objects>
             <point key="canvasLocation" x="6150" y="1046"/>
         </scene>
+        <!--Geocording View Controller-->
+        <scene sceneID="TKP-yZ-YCE">
+            <objects>
+                <viewController id="Nc9-FI-btT" customClass="geocordingViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AxS-3H-4gP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fd4-a8-6w3">
+                                <rect key="frame" x="172" y="115" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="go!"/>
+                                <connections>
+                                    <action selector="goBtn:" destination="Nc9-FI-btT" eventType="touchUpInside" id="KEH-r8-86T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="1hY-qp-e35"/>
+                    </view>
+                    <connections>
+                        <outlet property="goBtn" destination="Fd4-a8-6w3" id="MbM-iI-uTz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C2t-5x-rT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4381.6000000000004" y="1971.3643178410796"/>
+        </scene>
         <!--Went Show View Controller-->
         <scene sceneID="7Xa-4d-zpi">
             <objects>
@@ -183,21 +220,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cb7-Bi-y8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7024.8000000000002" y="133.5832083958021"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="lS4-Oy-vJ8">
-            <objects>
-                <viewController id="B9z-58-bdV" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IuW-Lq-A44">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="RSz-QX-ClG"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vdg-XB-VFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6998" y="1046"/>
         </scene>
         <!--Item-->
         <scene sceneID="0bu-uI-EG1">
