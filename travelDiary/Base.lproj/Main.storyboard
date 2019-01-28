@@ -128,9 +128,6 @@
                                 <rect key="frame" x="88" y="102" width="199" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="行きたい場所をマップで検索"/>
-                                <connections>
-                                    <segue destination="Nc9-FI-btT" kind="show" id="3vG-Oz-6zj"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -190,21 +187,20 @@
                                 <rect key="frame" x="172" y="115" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="go!"/>
-                                <connections>
-                                    <action selector="goBtn:" destination="Nc9-FI-btT" eventType="touchUpInside" id="KEH-r8-86T"/>
-                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpW-gJ-L2R">
+                                <rect key="frame" x="287" y="115" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="決定！"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="1hY-qp-e35"/>
                     </view>
-                    <connections>
-                        <outlet property="goBtn" destination="Fd4-a8-6w3" id="MbM-iI-uTz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2t-5x-rT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4381.6000000000004" y="1971.3643178410796"/>
+            <point key="canvasLocation" x="4381.6000000000004" y="2014.5427286356824"/>
         </scene>
         <!--Went Show View Controller-->
         <scene sceneID="7Xa-4d-zpi">

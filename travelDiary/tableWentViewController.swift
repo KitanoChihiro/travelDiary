@@ -58,6 +58,7 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Viewに追加する処理
         view.addSubview(tableView)
+        view.backgroundColor = UIColor(hex: "FFE3A3")
 
     }
     

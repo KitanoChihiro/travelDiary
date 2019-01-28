@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 
+// グローバル変数を作ってどこでも使えるように定義しておく
+var resultPlace:String! = ""
+var resultLatitude:Double! = 0.0
+var resultLongitude:Double! = 0.0
+
 class geocordingViewController: UIViewController {
     
     // スクリーンのサイズを入れる変数を宣言
@@ -27,17 +32,22 @@ class geocordingViewController: UIViewController {
     // 緯度経度
     var searchLatCenter:Double = 0.0
     var searchLngCenter:Double = 0.0
-
-    @IBOutlet weak var goBtn: UIButton!
     
+    // 検索開始ボタン
+    var goBtn:UIButton!
+    // 前画面に戻る
+    var backBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         resultMap = MKMapView()
         searchText = UITextField()
         latitudeLabel = UILabel()
         longitudeLabel = UILabel()
+        goBtn = UIButton()
+        backBtn  = UIButton()
         
         //スクリーンのサイズ取得
         screenWidth = UIScreen.main.bounds.size.width
@@ -45,12 +55,17 @@ class geocordingViewController: UIViewController {
 
         resultMap.frame = CGRect(x: 0, y: 300, width: screenWidth, height: 600)
         goBtn.frame = CGRect(x: 20, y: 150, width: 100, height: 40)
-        goBtn.backgroundColor = .white
+        goBtn.backgroundColor = .red
         searchText.frame = CGRect(x: 20, y: 200, width: 300, height: 40)
         searchText.backgroundColor = .white
         latitudeLabel.frame = CGRect(x: 20, y: 250, width: 100, height: 40)
         longitudeLabel.frame = CGRect(x: 230, y: 250, width: 100, height: 40)
+        backBtn.frame = CGRect(x: 200, y: 150, width: 100, height: 40)
+        backBtn.backgroundColor = .white
+        view.backgroundColor = UIColor(hex: "FFE3A3")
         
+    
+        view.addSubview(backBtn)
         view.addSubview(resultMap)
         view.addSubview(searchText)
         view.addSubview(goBtn)
@@ -59,10 +74,33 @@ class geocordingViewController: UIViewController {
         view.addSubview(longitudeLabel)
         
         
+        // バックボタン「決定」を押したときの動き
+        backBtn.addTarget(self, action:  #selector(geocordingViewController.back(_:)), for: .touchUpInside)
+        
+        // goBtnを押したときの動き
+        goBtn.addTarget(self, action:
+            #selector(geocordingViewController.goBtn(_:)), for: .touchUpInside)
         
     }
     
-    //
+    // セグエに関するコード
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    @objc func back(_ sender: UIButton) {
+        
+        resultPlace = searchText.text
+        resultLatitude = searchLatCenter
+        resultLongitude = searchLngCenter
+        // selectorで呼び出す場合Swift4からは「@objc」をつける。
+        self.dismiss(animated: true, completion: nil)
+        
+        // 前ページラベルに場所の名前をセットしておく
+        resultPlace = searchText.text!
+  
+    }
+    
+    // 検索ボタンがタップされた時
     @IBAction func goBtn(_ sender: Any) {
         //ほんとはここで入力チェックとかのバリデーションした方がいいかも
         

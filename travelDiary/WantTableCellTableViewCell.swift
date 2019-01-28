@@ -16,6 +16,7 @@ class WantTableCellTableViewCell: UITableViewCell {
     
     
     
+    
     // cellに表示する内容
     func cellShow(chooseNum: IndexPath){
         self.wantPlace.text = String((chooseNum.row) + 1)
@@ -37,7 +38,6 @@ class WantTableCellTableViewCell: UITableViewCell {
         self.addSubview(wantPlace)
         self.addSubview(wantDate)
         self.addSubview(wantPurpose)
-        
     }
 }
 

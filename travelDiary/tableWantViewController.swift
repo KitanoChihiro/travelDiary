@@ -22,7 +22,8 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
     var selectedThings:String!
     var selecetdBuget:String!
     var selectedBuget2:String!
-    
+    var selectedLanditude:Double!
+    var selectedLongitude:Double!
     
     // スクリーンのサイズを入れる変数を宣言
     var screenWidth:CGFloat!
@@ -61,7 +62,8 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         
         
         // Viewに追加する処理
-        view.addSubview(tableView)  
+        view.addSubview(tableView)
+        view.backgroundColor = UIColor(hex: "FFE3A3")
         
     }
     
@@ -129,6 +131,9 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         selectedThings = (wantDetail.wantDetail[indexPath.row]["things"] as! String)
         selecetdBuget = (wantDetail.wantDetail[indexPath.row]["mLess"] as! String)
         selectedBuget2 = (wantDetail.wantDetail[indexPath.row]["mUpper"] as! String)
+        selectedLanditude = (wantDetail.wantDetail[indexPath.row]["landitude"] as! Double)
+        selectedLongitude = (wantDetail.wantDetail[indexPath.row]["longitude"] as! Double)
+        
    
         // セグエの名前を指定して移動
         performSegue(withIdentifier: "wantData", sender: nil)
@@ -146,6 +151,9 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         wsVC.selectedThings = selectedThings
         wsVC.selecetdBuget = selecetdBuget
         wsVC.selectedBuget2 = selectedBuget2
+        wsVC.selectedLanditude = selectedLanditude
+        wsVC.selectedLongitude = selectedLongitude
+ 
     }
 
  

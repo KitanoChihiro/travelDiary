@@ -39,6 +39,7 @@ class ViewController: UIViewController {
         view.addSubview(resultMap)
         resultMap.addSubview(wantBtn)
         resultMap.addSubview(wentBtn)
+        view.backgroundColor = UIColor(hex: "FFE3A3")
     }
 
 

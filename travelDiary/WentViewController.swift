@@ -141,6 +141,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         scrollView.addSubview(imageView)
         scrollView.addSubview(chooseBtn)
         scrollView.addSubview(decideBtn)
+        scrollView.backgroundColor = UIColor(hex: "FFE3A3")
         
         // UIScrollViewのコンテンツのサイズを指定
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)

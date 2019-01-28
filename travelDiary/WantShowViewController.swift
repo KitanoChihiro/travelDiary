@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class WantShowViewController: UIViewController {
     
@@ -46,6 +47,9 @@ class WantShowViewController: UIViewController {
     let budgetText = UITextField()
     let budget2Text = UITextField()
     
+    let map = MKMapView()
+    
+    
     // 前ページで送られてきたデータの型
     var selectedIndex = -1
     var selectedPlace:String!
@@ -55,9 +59,8 @@ class WantShowViewController: UIViewController {
     var selectedThings:String!
     var selecetdBuget:String!
     var selectedBuget2:String!
-    
-    
-    
+    var selectedLanditude:Double!
+    var selectedLongitude:Double!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +134,7 @@ class WantShowViewController: UIViewController {
         yenLastLabel.text = "円"
         yenLastLabel.frame = CGRect(x: 370, y: placeHeight + dateHeight + purposeHeight + detailHeight + thingsHeight + 297, width: screenWidth - 280, height: budgetHeight)
         
+        map.frame = CGRect(x: 20, y: placeHeight + dateHeight + purposeHeight + detailHeight + thingsHeight + 400, width: screenWidth - 40, height: 300)
         
         // ビューに追加
         scrollView.addSubview(placeLabel)
@@ -148,9 +152,11 @@ class WantShowViewController: UIViewController {
         scrollView.addSubview(yenFirstLabel)
         scrollView.addSubview(budget2Text)
         scrollView.addSubview(yenLastLabel)
+        scrollView.addSubview(map)
+        scrollView.backgroundColor = UIColor(hex: "FFE3A3")
         
         // UIScrollViewのコンテンツのサイズを指定
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 200)
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 450)
         
         // ビューに追加
         self.view.addSubview(scrollView)
@@ -167,7 +173,7 @@ class WantShowViewController: UIViewController {
 //        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
 //        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
 
-        
+        // セグエを通って表示させるもの
         placeText.text = selectedPlace
         dateText.text = selectedDate
         purposeText.text = selectedPurpose
@@ -175,7 +181,39 @@ class WantShowViewController: UIViewController {
         thingsText.text = selectedThings
         budgetText.text = selecetdBuget
         budget2Text.text = selectedBuget2
+        resultLatitude = selectedLanditude
+        resultLongitude = selectedLongitude
+        // mapにピンをさす関数
+        setMapCenter()
         
+    }
+    
+    //検索結果をもとに地図中央にピンをセット
+    func setMapCenter(){
+        //中心となる場所（検索ワード）の座標オブジェクトを作成
+        let coodinate = CLLocationCoordinate2DMake(selectedLanditude, selectedLongitude)
+        
+        //縮尺を設定
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        
+        //範囲オブジェクトを作成
+        let region = MKCoordinateRegion(center: coodinate, span: span)
+        
+        //MapViewに範囲オブジェクトを設置
+        map.setRegion(region, animated: true)
+        
+        //ピンオブジェクトを作成
+        let centerPin = MKPointAnnotation()
+        
+        //ピンの座標を設定
+        centerPin.coordinate = coodinate
+        
+        //タイトル、サブタイトルを設定
+        centerPin.title = "検索結果"
+        centerPin.subtitle = placeText.text
+        
+        //ピンを地図上に追加
+        map.addAnnotation(centerPin)
         
     }
 }

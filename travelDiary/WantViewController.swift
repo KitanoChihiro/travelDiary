@@ -52,7 +52,7 @@ class WantViewController: UIViewController {
     let thingsText = UITextView()
     let budgetText = UITextField()
     let budget2Text = UITextField()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -127,8 +127,10 @@ class WantViewController: UIViewController {
         
         // 決定ボタンのプロパティ
         okBtn.frame = CGRect(x: 160, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 357, width: screenWidth - 320, height: 40)
+   
+        // サーチボタンの設定
+        searchBtn.addTarget(self, action: #selector(WantViewController.goNext(_:)), for: .touchUpInside)
         
-       
         
         // ビューに追加
         scrollView.addSubview(placeLabel)
@@ -148,22 +150,40 @@ class WantViewController: UIViewController {
         scrollView.addSubview(yenLastLabel)
         scrollView.addSubview(okBtn)
         scrollView.addSubview(searchBtn)
+        scrollView.backgroundColor = UIColor(hex: "FFE3A3")
         
         
         // UIScrollViewのコンテンツのサイズを指定
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 200)
-        
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 300)
+
         // ビューに追加
         self.view.addSubview(scrollView)
-        
+
+    }
+    
+    // サーチボタンの設定
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    // サーチボタンを押したらジオコーディングの画面に遷移する
+    @objc func goNext(_ sender: UIButton) {
+        // selectorで呼び出す場合Swift4からは「@objc」をつける。
+        let gcVC = geocordingViewController()
+        self.present(gcVC, animated: true, completion: nil)
     }
     
     //画面が現れる時に表示
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // キーボードに関する処理
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
+        
+        // セグエから情報を受け取る処理
+        placeText.text = resultPlace
+        print("memo:緯度\(resultLatitude)")
+        print("memo:経度\(resultLongitude)")
     }
     
     @IBAction func okBtn(_ sender: Any) {
@@ -173,7 +193,7 @@ class WantViewController: UIViewController {
         
         
         // DBへのよ登録処理の関数の呼び出し
-        wantDetail.create(place: placeText.text!, date: datePicker.date, purpose: purposeText.text, comment: detailText.text, things: thingsText.text, mLess: budgetText.text!, mUpper: budget2Text.text!)
+        wantDetail.create(place: placeText.text!, date: datePicker.date, purpose: purposeText.text, comment: detailText.text, things: thingsText.text, mLess: budgetText.text!, mUpper: budget2Text.text!, landitude: resultLatitude, longitude: resultLongitude, created: Date())
         // DBからデータを取得して呼び出す処理
         wantDetail.readAll()
         
@@ -182,10 +202,6 @@ class WantViewController: UIViewController {
         
     }
 }
-
-
-
-
 
 //キーボード関連の関数をまとめる。
 extension WantViewController{
@@ -219,12 +235,15 @@ class WantDetail: Object{
     @objc dynamic var things = String()
     @objc dynamic var mLess = String()
     @objc dynamic var mUpper = String()
+    @objc dynamic var landitude = Double()
+    @objc dynamic var longitude = Double()
+    @objc dynamic var created:Date = Date()
     
     // 辞書型配列としてデータを登録
     var wantDetail = [NSDictionary]()
     
     // DBに登録する
-    func create(place:String, date:Date, purpose:String, comment:String, things:String, mLess:String, mUpper:String){
+    func create(place:String, date:Date, purpose:String, comment:String, things:String, mLess:String, mUpper:String, landitude:Double, longitude:Double, created:Date){
         
         let realm = try!Realm()
         
@@ -239,6 +258,9 @@ class WantDetail: Object{
             wantDetail.things = things
             wantDetail.mLess = mLess
             wantDetail.mUpper = mUpper
+            wantDetail.landitude = landitude
+            wantDetail.longitude = longitude
+            wantDetail.created = created
             
             print(wantDetail)
             
@@ -254,7 +276,7 @@ class WantDetail: Object{
         let realm = try! Realm()
         let wantDetail = realm.objects(WantDetail.self)
         for value in wantDetail{
-            let detail = ["place": value.place, "date": value.date, "purpose": value.purpose, "comment": value.comment, "things": value.things, "mLess": value.mLess, "mUpper": value.mUpper] as NSDictionary
+            let detail = ["place": value.place, "date": value.date, "purpose": value.purpose, "comment": value.comment, "things": value.things, "mLess": value.mLess, "mUpper": value.mUpper, "landitude": value.landitude, "longitude": value.longitude, "created": value.created] as NSDictionary
 
             self.wantDetail.append(detail)
         }
@@ -267,5 +289,7 @@ class WantDetail: Object{
             realm.delete(realm.objects(WantDetail.self))
         }
     }
+    
+    
 }
 

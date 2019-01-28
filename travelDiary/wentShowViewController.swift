@@ -125,6 +125,7 @@ class wentShowViewController: UIViewController {
         scrollView.addSubview(detailTextView)
         scrollView.addSubview(picLabel)
         scrollView.addSubview(imageView)
+        scrollView.backgroundColor = UIColor(hex: "FFE3A3")
 
         
         // UIScrollViewのコンテンツのサイズを指定
