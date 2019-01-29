@@ -160,18 +160,14 @@ class WantShowViewController: UIViewController {
         
         // ビューに追加
         self.view.addSubview(scrollView)
-        
-        
-        
+
     }
     
     //画面が現れる時に表示
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) 
-        
-//
-//        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
-//        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
 
         // セグエを通って表示させるもの
         placeText.text = selectedPlace
@@ -209,8 +205,8 @@ class WantShowViewController: UIViewController {
         centerPin.coordinate = coodinate
         
         //タイトル、サブタイトルを設定
-        centerPin.title = "検索結果"
-        centerPin.subtitle = placeText.text
+        centerPin.title = placeText.text
+        centerPin.subtitle = purposeText.text
         
         //ピンを地図上に追加
         map.addAnnotation(centerPin)
@@ -218,26 +214,26 @@ class WantShowViewController: UIViewController {
     }
 }
 
-//extension WantShowViewController{
-//
-//    //キーボードが表示された時に呼ばれる
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        let insertHeight:CGFloat = 380
-//        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
-//        let offset = CGPoint(x: 0, y: insertHeight)
-//        scrollView.setContentOffset(offset, animated: true)
-//        print("スクリーンのサイズをキーボードの高さ分伸ばし伸ばした分動かす。")
-//    }
-//
-//    //キーボードが閉じる時に呼ばれる
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 200)
-//        print("元の大きさへ")
-//    }
-//
-//
-//    @objc func closeKeybord(_ sender:Any){
-//        self.view.endEditing(true)
-//    }
-//
-//}
+extension WantShowViewController{
+
+    //キーボードが表示された時に呼ばれる
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let insertHeight:CGFloat = 380
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
+        let offset = CGPoint(x: 0, y: insertHeight)
+        scrollView.setContentOffset(offset, animated: true)
+        print("スクリーンのサイズをキーボードの高さ分伸ばし伸ばした分動かす。")
+    }
+
+    //キーボードが閉じる時に呼ばれる
+    @objc func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 200)
+        print("元の大きさへ")
+    }
+
+
+    @objc func closeKeybord(_ sender:Any){
+        self.view.endEditing(true)
+    }
+
+}

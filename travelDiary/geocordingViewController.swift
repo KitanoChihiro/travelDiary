@@ -80,6 +80,8 @@ class geocordingViewController: UIViewController {
         // goBtnを押したときの動き
         goBtn.addTarget(self, action:
             #selector(geocordingViewController.goBtn(_:)), for: .touchUpInside)
+        // キーボードファンクションの呼び出し
+        keyboad()
         
     }
     
@@ -203,5 +205,21 @@ class geocordingViewController: UIViewController {
         
         //ピンを地図上に追加
         resultMap.addAnnotation(centerPin)
+    }
+}
+
+extension geocordingViewController{
+    func keyboad(){
+        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        kbToolBar.barStyle = UIBarStyle.default
+        kbToolBar.sizeToFit()
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        // 閉じるボタン
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action:#selector(self.closeKeybord(_:)))
+        kbToolBar.items = [spacer, commitButton]
+        searchText.inputAccessoryView = kbToolBar
+    }
+    @objc func closeKeybord(_ sender:Any){
+        self.view.endEditing(true)
     }
 }

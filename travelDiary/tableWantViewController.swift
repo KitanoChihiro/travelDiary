@@ -79,7 +79,7 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         print("こんにちは")
         
         // カスタムセルのインスタンス化
-        let cell = WantTableCellTableViewCell()
+        var cell = WantTableCellTableViewCell()
         
         // セルの中に矢印
         cell.accessoryType = .disclosureIndicator
@@ -95,7 +95,7 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         cell.wantDate.text = changeDate
         
         cell.wantPurpose.text = (wantDetail.wantDetail[indexPath.row]["purpose"] as! String)
-        
+ 
         return cell
     }
     
@@ -113,9 +113,7 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("\(indexPath.row)行目選択")
-        
-        
-        
+
         // セグエが選択されたときにどのデータをとってくるかの指定
         // (今選択されているパスの指定)
         selectedIndex = indexPath.row
@@ -134,8 +132,7 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         selectedLanditude = (wantDetail.wantDetail[indexPath.row]["landitude"] as! Double)
         selectedLongitude = (wantDetail.wantDetail[indexPath.row]["longitude"] as! Double)
         
-   
-        // セグエの名前を指定して移動
+//        // ここの表記がないと移動できない
         performSegue(withIdentifier: "wantData", sender: nil)
     }
     
