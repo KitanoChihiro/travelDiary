@@ -11,7 +11,7 @@ import RealmSwift
 
 class WantViewController: UIViewController {
     
-    @IBOutlet weak var okBtn: UIButton!
+    let okBtn = UIButton()
     
     
     // スクロールビューのデータを入れるための変数
@@ -40,9 +40,7 @@ class WantViewController: UIViewController {
     let budgetLabel = UILabel()
     let yenFirstLabel = UILabel()
     let yenLastLabel = UILabel()
-    
-    // マップサーチ画面に行く
-    @IBOutlet weak var searchBtn: UIButton!
+    let searchBtn = UIButton()
     
     // 各text系のインスタンス化
     let placeText = UITextField()
@@ -70,65 +68,70 @@ class WantViewController: UIViewController {
         
         // 場所プロパティ
         placeLabel.text = "場所"
-        placeLabel.frame = CGRect(x: 20, y: 20, width: screenWidth - 40, height: 40)
+        placeLabel.frame = CGRect(x: 20, y: 70, width: screenWidth - 40, height: 40)
         
         placeText.backgroundColor = .white
-        placeText.frame = CGRect(x: 20, y: 62, width: screenWidth - 40, height: placetextHeight)
+        placeText.frame = CGRect(x: 20, y: 112, width: screenWidth - 40, height: placetextHeight)
         placeText.font = UIFont.systemFont(ofSize: 20)
         
         // 日付プロパティ
         dateLabel.text = "日付"
-        dateLabel.frame = CGRect(x: 20, y: placetextHeight + 67, width: screenWidth - 40, height: 40)
+        dateLabel.frame = CGRect(x: 20, y: placetextHeight + 117, width: screenWidth - 40, height: 40)
         
-        datePicker.frame = CGRect(x: 20, y: placetextHeight + 109, width: screenWidth - 40, height: datePickerHeight)
+        datePicker.frame = CGRect(x: 20, y: placetextHeight + 159, width: screenWidth - 40, height: datePickerHeight)
         datePicker.datePickerMode = .date
         
         // 目的プロパティ
         purposeLabel.text = "目的"
-        purposeLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + 114, width: screenWidth - 40, height: 40)
+        purposeLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + 164, width: screenWidth - 40, height: 40)
         
         purposeText.backgroundColor = .white
-        purposeText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + 156, width: screenWidth - 40, height: purposeHeight)
+        purposeText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + 206, width: screenWidth - 40, height: purposeHeight)
         purposeText.font = UIFont.systemFont(ofSize: 20)
         // 詳細プロパティ
         detailLabel.text = "詳細"
-        detailLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + 161, width: screenWidth - 40, height: 40)
+        detailLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + 211, width: screenWidth - 40, height: 40)
         
         detailText.backgroundColor = .white
-        detailText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + 203, width: screenWidth - 40, height: detailHeight)
+        detailText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + 253, width: screenWidth - 40, height: detailHeight)
         detailText.font = UIFont.systemFont(ofSize: 20)
         
         // 持ち物プロパティ
         thingsLabel.text = "持ち物"
-        thingsLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + 208, width: screenWidth - 40 , height: 40)
+        thingsLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + 258, width: screenWidth - 40 , height: 40)
         
         thingsText.backgroundColor = .white
-        thingsText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + 250, width: screenWidth - 40, height: thingsHeight)
+        thingsText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + 300, width: screenWidth - 40, height: thingsHeight)
         thingsText.font = UIFont.systemFont(ofSize: 20)
         
         // 予算プロパティ
         budgetLabel.text = "予算"
-        budgetLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 255, width: screenWidth - 40, height: 40)
+        budgetLabel.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 305, width: screenWidth - 40, height: 40)
         
         budgetText.backgroundColor = .white
-        budgetText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 297, width: screenWidth - 280, height: budgetHeight)
+        budgetText.frame = CGRect(x: 20, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 347, width: screenWidth - 280, height: budgetHeight)
         budgetText.font = UIFont.systemFont(ofSize: 20)
         
         budget2Text.backgroundColor = .white
-        budget2Text.frame = CGRect(x: 230, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 297, width: screenWidth - 280, height: budgetHeight)
+        budget2Text.frame = CGRect(x: 230, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 347, width: screenWidth - 280, height: budgetHeight)
         budgetText.font = UIFont.systemFont(ofSize: 20)
         
         // 円のプロパティ
         yenFirstLabel.text = "円　〜"
-        yenFirstLabel.frame = CGRect(x: 160, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 297, width: screenWidth - 280, height: budgetHeight)
+        yenFirstLabel.frame = CGRect(x: 160, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 347, width: screenWidth - 280, height: budgetHeight)
         
         yenLastLabel.text = "円"
-        yenLastLabel.frame = CGRect(x: 370, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 297, width: screenWidth - 280, height: budgetHeight)
+        yenLastLabel.frame = CGRect(x: 370, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 347, width: screenWidth - 280, height: budgetHeight)
         
         // 決定ボタンのプロパティ
-        okBtn.frame = CGRect(x: 160, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 357, width: screenWidth - 320, height: 40)
+        okBtn.setTitle("登録！", for: .normal)
+        okBtn.frame = CGRect(x: 160, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 437, width: screenWidth - 320, height: 40)
+        
+        okBtn.addTarget(self, action: #selector(okBtn(_:)), for: .touchUpInside)
    
         // サーチボタンの設定
+        searchBtn.setTitle("場所を検索する", for: .normal)
+        searchBtn.frame = CGRect(x: 100, y: 70, width: screenWidth - 300, height: 40)
         searchBtn.addTarget(self, action: #selector(WantViewController.goNext(_:)), for: .touchUpInside)
         
         
@@ -154,7 +157,7 @@ class WantViewController: UIViewController {
         
         
         // UIScrollViewのコンテンツのサイズを指定
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 300)
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 350)
 
         // ビューに追加
         self.view.addSubview(scrollView)
@@ -179,14 +182,21 @@ class WantViewController: UIViewController {
         // キーボードに関する処理
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
+        print("動作しています")
         
         // セグエから情報を受け取る処理
         placeText.text = resultPlace
         print("memo:緯度\(resultLatitude)")
         print("memo:経度\(resultLongitude)")
     }
+    //画面が消える時に呼ばれる
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillHideNotification,object: nil)
+    }
     
-    @IBAction func okBtn(_ sender: Any) {
+    @objc func okBtn(_ sender: Any) {
         
         // DB関数の呼び出し
         let wantDetail = WantDetail()
@@ -217,7 +227,7 @@ extension WantViewController{
     
     //キーボードが閉じる時に呼ばれる
     @objc func keyboardWillHide(notification: NSNotification) {
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 200)
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 380)
         print("元の大きさへ")
     }
     
@@ -274,7 +284,10 @@ class WantDetail: Object{
         self.wantDetail = []
         
         let realm = try! Realm()
-        let wantDetail = realm.objects(WantDetail.self)
+        var wantDetail = realm.objects(WantDetail.self)
+        // ascending true→古いもの順　false→新しいもの順
+        wantDetail = wantDetail.sorted(byKeyPath: "created", ascending: false)
+        
         for value in wantDetail{
             let detail = ["place": value.place, "date": value.date, "purpose": value.purpose, "comment": value.comment, "things": value.things, "mLess": value.mLess, "mUpper": value.mUpper, "landitude": value.landitude, "longitude": value.longitude, "created": value.created] as NSDictionary
 

@@ -28,6 +28,9 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     let personLabel = UILabel()
     let detailLabel = UILabel()
     let picLabel = UILabel()
+    let chooseBtn = UIButton()
+    let decideBtn = UIButton()
+    let searchPlace = UIButton()
     
     // 各textfieldのインスタンス化
     let placeTextField = UITextView()
@@ -42,14 +45,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     
     // インスタカメラロール
     var willPostImage:UIImage!
-    
-    // 写真選択ボタンのインスタンス化
-    @IBOutlet weak var chooseBtn: UIButton!
-    
-    // 決定ボタンのインスタンス化
-    @IBOutlet weak var decideBtn: UIButton!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,58 +70,63 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         // 場所labelのプロパティ
         placeLabel.text = "場所"
-        placeLabel.frame = CGRect(x: 20, y: 20, width: screenWidth - 40, height: 40)
+        placeLabel.frame = CGRect(x: 20, y: 70, width: screenWidth - 40, height: 40)
         
         
         // 場所textプロパティ追加
         placeTextField.backgroundColor = .white
-        placeTextField.frame = CGRect(x: 20, y: 62, width: screenWidth - 40, height: placeTextFieldHeight)
+        placeTextField.frame = CGRect(x: 20, y: 112, width: screenWidth - 40, height: placeTextFieldHeight)
         placeTextField.font = UIFont.systemFont(ofSize: 20)
         
         // 日時labelプロパティ
         dateLabel.text = "日時"
-        dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 67, width: screenWidth - 40, height: 40)
+        dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 117, width: screenWidth - 40, height: 40)
         
         // datePickerのプロパティ
-        datePicker.frame = CGRect(x: 20, y: placeTextFieldHeight + 109, width: screenWidth - 40, height: datePickerViewHeight)
+        datePicker.frame = CGRect(x: 20, y: placeTextFieldHeight + 159, width: screenWidth - 40, height: datePickerViewHeight)
         datePicker.datePickerMode = .date
         
         // 一緒に行った人labelプロパティ
         personLabel.text = "行った人"
-        personLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 114, width: screenWidth - 40, height: 40)
+        personLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 164, width: screenWidth - 40, height: 40)
         
         // 一緒に行った人textFieldプロパティ
         personTextField.backgroundColor = .white
-        personTextField.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 156, width: screenWidth - 40, height: persontextfieldHeight)
+        personTextField.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + 206, width: screenWidth - 40, height: persontextfieldHeight)
         personTextField.font = UIFont.systemFont(ofSize: 20)
         
         // 詳細ラベルプロパティ
         detailLabel.text = "詳細"
-        detailLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 161, width: screenWidth - 40, height: 40)
+        detailLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 211, width: screenWidth - 40, height: 40)
         
         detailTextView.backgroundColor = .white
-        detailTextView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 203, width: screenWidth - 40, height: detailTextViewHeight)
+        detailTextView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + 253, width: screenWidth - 40, height: detailTextViewHeight)
         detailTextView.font = UIFont.systemFont(ofSize: 20)
         
         
         // イメージ追加プロパティ
         picLabel.text = "写真"
-        picLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 208, width: screenWidth - 40, height: 40)
+        picLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 258, width: screenWidth - 40, height: 40)
         
         
         
-        imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 250, width: screenWidth - 40, height: imageViewHeight)
+        imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 300, width: screenWidth - 40, height: imageViewHeight)
         
         // イメージサイズごとにviewのサイズを変更する
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         
         
         // 写真追加のボタンのプロパティ
-        chooseBtn.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 208, width: screenWidth - 60, height: 40)
+        chooseBtn.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 258, width: screenWidth - 60, height: 40)
+        // ボタンのファンクションの追加(YPImagePickerの追加)
+        chooseBtn.addTarget(self, action: #selector(chooseBtn(_:)), for: .touchUpInside)
+        chooseBtn.setTitle("写真の追加する", for: .normal)
         
         // 決定ボタンのプロパティ
-        decideBtn.frame = CGRect(x: 110, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + imageViewHeight + 260, width: screenWidth - 200, height: 40)
-        
+        decideBtn.frame = CGRect(x: 110, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + imageViewHeight + 310, width: screenWidth - 200, height: 40)
+        decideBtn.setTitle("登録！！", for: .normal)
+        // 決定ボタンのファンクション追加（DBに登録処理）
+        decideBtn.addTarget(self, action: #selector(okBtn(_:)), for: .touchUpInside)
         
         
         // 各オブジェクトをビューに追加
@@ -144,7 +145,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         scrollView.backgroundColor = UIColor(hex: "FFE3A3")
         
         // UIScrollViewのコンテンツのサイズを指定
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 490)
         
         
         // インスタライクなカメラロール
@@ -161,10 +162,26 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         //ImagePickerの設定
         YPImagePickerConfiguration()
         
+        // searchPlaceの設定
+        searchPlace.addTarget(self, action: #selector(WentViewController.goNext(_:)), for: .touchUpInside)
+        searchPlace.setTitle("場所を検索する", for: .normal)
+        searchPlace.frame = CGRect(x: 100, y: 70, width: screenWidth - 300, height: 40)
+        
         // ビューに追加
         self.view.addSubview(scrollView)
+        scrollView.addSubview(searchPlace)
         
-        
+    }
+    
+//    // サーチボタンの設定
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//    }
+    // サーチボタンを押したらジオコーディングの画面に遷移する
+    @objc func goNext(_ sender: UIButton) {
+        // selectorで呼び出す場合Swift4からは「@objc」をつける。
+        let gcVC = geocordingViewController()
+        self.present(gcVC, animated: true, completion: nil)
     }
     
     //画面が現れる時に表示
@@ -173,11 +190,16 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
+        
+        // 場所の検索してから入力画面に値を渡す
+        placeTextField.text = resultPlace
+        print(resultLatitude)
+        print(resultLongitude)
     }
     
     
     // 写真選択のボタンが押されたら
-    @IBAction func chooseBtn(_ sender: Any) {
+    @objc func chooseBtn(_ sender: UIButton) {
         let picker = YPImagePicker()
         var image:UIImage!
         
@@ -215,7 +237,6 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     //インスタ風ImagePickerの設定
     func YPImagePickerConfig(){
         var config = YPImagePickerConfiguration()
@@ -240,12 +261,10 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         YPImagePickerConfiguration.shared = config
         
     }
-    @IBAction func okBtn(_ sender: Any) {
+    @objc func okBtn(_ sender: Any) {
         
         // 選択した画像と名前の配列を作る
-        
-        
-        
+
         // ↓この関数をfor文で、回す
         //保存する用のパス
         //        let path = "file://" + fileInDocumentsDirectory(filename: "")
@@ -263,14 +282,41 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         let wentDetail = WentDetail()
         
         // データの書き込み
-        wentDetail.create(place: placeTextField.text, date: datePicker.date, person: personTextField.text, comment: detailTextView.text, imageURL: "path2")
+        wentDetail.create(place: placeTextField.text, date: datePicker.date, person: personTextField.text, comment: detailTextView.text, imageURL: "path2", landitude: resultLatitude, longitude: resultLongitude, created: Date())
+        // DB関係の関数呼び出し
         wentDetail.readAll()
         
-        print(wentDetail.wentDetail)
+        //部品のアラートを作る
+        let alertController = UIAlertController(title: "e.g.こんにちは", message: "e.g.日本語だよ", preferredStyle: UIAlertController.Style.alert)
+        //ちなみにUIAlertControllerStyle.alertをactionsheetに変えると下からにょきっと出てくるやつになるよ
         
+        //OKボタン追加
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{(action: UIAlertAction!) in
+            self.tabBarController?.selectedIndex = 1
+            //アラートが消えるのと画面遷移が重ならないように0.5秒後に画面遷移するようにしてる
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                // 0.5秒後に実行したい処理
+//                let storyboard: UIStoryboard = self.storyboard!
+//                let nextView = storyboard.instantiateViewController(withIdentifier: "homeVC")
+//                self.present(nextView, animated: true, completion: nil)
+//            }
+        }
+        )
         
+        alertController.addAction(okAction)
+        
+        //アラートを表示する
+        present(alertController, animated: true, completion: nil)
+        
+
+        
+        print("結果\(resultLatitude)")
+        print("結果\(resultLongitude)")
     }
-    
+    func myMessage(){
+        self.dismiss(animated: true, completion: nil)
+        print("戻ります")
+    }
 }
 
 
@@ -287,17 +333,16 @@ extension WentViewController{
     
     //キーボードが表示された時に呼ばれる
     @objc func keyboardWillShow(notification: NSNotification) {
-        let insertHeight:CGFloat = 250
+        let insertHeight:CGFloat = 260
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
         let offset = CGPoint(x: 0, y: insertHeight)
         scrollView.setContentOffset(offset, animated: true)
-        print("スクリーンのサイズをキーボードの高さ分伸ばし伸ばした分動かす。")
     }
     
     //キーボードが閉じる時に呼ばれる
     @objc func keyboardWillHide(notification: NSNotification) {
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
-        print("元の大きさへ")
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 260)
+        
     }
     
     
@@ -351,12 +396,15 @@ class WentDetail: Object {
     @objc dynamic var person = String()
     @objc dynamic var comment = String()
     @objc dynamic var imageURL = String()
+    @objc dynamic var landitude = Double()
+    @objc dynamic var longitude = Double()
+    @objc dynamic var created:Date = Date()
     
     // 辞書型配列としてデータを登録
     var wentDetail = [NSDictionary]()
     
     // DBに登録する処理
-    func create(place:String, date:Date, person:String, comment:String, imageURL:String){
+    func create(place:String, date:Date, person:String, comment:String, imageURL:String, landitude:Double, longitude:Double, created:Date){
         
         let realm = try!Realm()
         
@@ -369,6 +417,9 @@ class WentDetail: Object {
             wentDetail.person = person
             wentDetail.comment = comment
             wentDetail.imageURL = imageURL
+            wentDetail.landitude = landitude
+            wentDetail.longitude = longitude
+            wentDetail.created = created
             
             print(wentDetail)
             
@@ -382,9 +433,12 @@ class WentDetail: Object {
         self.wentDetail = []
         
         let realm = try! Realm()
-        let wentDetail = realm.objects(WentDetail.self)
+        var wentDetail = realm.objects(WentDetail.self)
+        // ascending true→古いもの順　false→新しいもの順
+        wentDetail = wentDetail.sorted(byKeyPath: "created", ascending: false)
+        
         for value in wentDetail{
-            let detail = ["place":value.place, "date":value.date, "person":value.person, "comment":value.comment, "imageURL":value.imageURL] as NSDictionary
+            let detail = ["place":value.place, "date":value.date, "person":value.person, "comment":value.comment, "imageURL":value.imageURL, "landitude":value.landitude, "longitude":value.longitude, "created":value.created] as NSDictionary
             
             self.wentDetail.append(detail)
         }
