@@ -130,21 +130,20 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         selectedLanditude = (wentDetail.wentDetail[indexPath.row]["landitude"] as! Double)
         selectedLongitude = (wentDetail.wentDetail[indexPath.row]["longitude"] as! Double)
         
-        // セグエのま名前を指定する
-        performSegue(withIdentifier: "wentData", sender: nil)
-    }
-    
-    // セグエを通って移動する時発動
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let wesVC = segue.destination as! wentShowViewController
+        // 遷移画面のインスタンス化
+        let wesVC = wentShowViewController()
+        
+        // 渡す準備
         wesVC.selectedIndex = selectedIndex
         wesVC.selectedPlace = selectedPlace
         wesVC.selectedDate = selectedDate
         wesVC.selectedperson = selectedPerson
         wesVC.selectedcomment = selectedComment
-//        wesVC.selectedURL = selectedURL
+        //        wesVC.selectedURL = selectedURL
         wesVC.selectedLanditude = selectedLanditude
         wesVC.selectedLongitude = selectedLongitude
+        
+        // データを渡す
+        self.present(wesVC, animated: true, completion: nil)
     }
-
 }

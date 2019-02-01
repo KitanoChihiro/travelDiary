@@ -261,6 +261,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         YPImagePickerConfiguration.shared = config
         
     }
+    
     @objc func okBtn(_ sender: Any) {
         
         // 選択した画像と名前の配列を作る
@@ -287,36 +288,31 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         wentDetail.readAll()
         
         //部品のアラートを作る
-        let alertController = UIAlertController(title: "e.g.こんにちは", message: "e.g.日本語だよ", preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: "登録完了！", message: "ホーム画面に戻ります！", preferredStyle: UIAlertController.Style.alert)
         //ちなみにUIAlertControllerStyle.alertをactionsheetに変えると下からにょきっと出てくるやつになるよ
         
         //OKボタン追加
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{(action: UIAlertAction!) in
-            self.tabBarController?.selectedIndex = 1
             //アラートが消えるのと画面遷移が重ならないように0.5秒後に画面遷移するようにしてる
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                // 0.5秒後に実行したい処理
-//                let storyboard: UIStoryboard = self.storyboard!
-//                let nextView = storyboard.instantiateViewController(withIdentifier: "homeVC")
-//                self.present(nextView, animated: true, completion: nil)
-//            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                // 0.5秒後に実行したい処理
+//                self.performSegue(withIdentifier: "backHomeSegue", sender: nil)
+                self.tabBarController?.selectedIndex = 1;
+            }
         }
         )
         
         alertController.addAction(okAction)
-        
         //アラートを表示する
         present(alertController, animated: true, completion: nil)
-        
 
-        
         print("結果\(resultLatitude)")
         print("結果\(resultLongitude)")
     }
-    func myMessage(){
-        self.dismiss(animated: true, completion: nil)
-        print("戻ります")
-    }
+//    func myMessage(){
+//        self.dismiss(animated: true, completion: nil)
+//        print("戻ります")
+//    }
 }
 
 
@@ -342,6 +338,20 @@ extension WentViewController{
     //キーボードが閉じる時に呼ばれる
     @objc func keyboardWillHide(notification: NSNotification) {
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 260)
+        
+    }
+    
+    func keybord(){
+        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        kbToolBar.barStyle = UIBarStyle.default
+        kbToolBar.sizeToFit()
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        // 閉じるボタン
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action:#selector(self.closeKeybord(_:)))
+        kbToolBar.items = [spacer, commitButton]
+        placeTextField.inputAccessoryView = kbToolBar
+        personTextField.inputAccessoryView = kbToolBar
+        detailTextView.inputAccessoryView = kbToolBar
         
     }
     

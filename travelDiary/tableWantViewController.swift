@@ -137,15 +137,11 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         selectedLanditude = (wantDetail.wantDetail[indexPath.row]["landitude"] as! Double)
         selectedLongitude = (wantDetail.wantDetail[indexPath.row]["longitude"] as! Double)
         
-//        // ここの表記がないと移動できない
-        performSegue(withIdentifier: "wantData", sender: nil)
-    }
-    
-    // セグエを通って移動する時発動
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let wsVC = segue.destination as! WantShowViewController
-        print("セルが選択されました")
         
+        // 画面遷移のインスタンス化
+        let wsVC = WantShowViewController()
+        
+        // 渡す情報準備
         wsVC.selectedIndex = selectedIndex
         wsVC.selectedPlace = selectedPlace
         wsVC.selectedDate = selectedDate
@@ -156,8 +152,9 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         wsVC.selectedBuget2 = selectedBuget2
         wsVC.selectedLanditude = selectedLanditude
         wsVC.selectedLongitude = selectedLongitude
- 
-    }
+        
+        // データを渡す
+        self.present(wsVC, animated: true, completion: nil)
 
- 
+    }
 }

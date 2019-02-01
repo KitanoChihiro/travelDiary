@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import RealmSwift
 
 class ViewController: UIViewController {
     
@@ -16,8 +17,13 @@ class ViewController: UIViewController {
     var screenWidth:CGFloat!
     var screenHeight:CGFloat!
     
+    // データベースの変数
+    let wantDetail = WantDetail()
+    let wentDetal = WentDetail()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         resultMap = MKMapView()
         
@@ -32,6 +38,13 @@ class ViewController: UIViewController {
         // ビューに追加の処理
         view.addSubview(resultMap)
         view.backgroundColor = UIColor(hex: "FFE3A3")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // DBを呼び出して、情報を読み込む
+        wantDetail.readAll()
+        wentDetal.readAll()
+        print(wantDetail.wantDetail)
     }
 
 
