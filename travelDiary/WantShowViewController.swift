@@ -214,7 +214,7 @@ class WantShowViewController: UIViewController {
     }
 }
 
-extension WantShowViewController{
+    extension WantShowViewController{
 
     //キーボードが表示された時に呼ばれる
     @objc func keyboardWillShow(notification: NSNotification) {

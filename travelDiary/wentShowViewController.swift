@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class wentShowViewController: UIViewController {
     // スクロールビューのデータを入れるための変数
     var scrollView:UIScrollView!
+    // テーブルビューからデータを辞書型で受け取る
+    var detail:NSDictionary!
     
     // スクリーンのサイズを入れる変数を宣言
     var screenWidth:CGFloat!
@@ -33,14 +36,17 @@ class wentShowViewController: UIViewController {
     
     // UIImageViewのインスタンス化
     let imageView = UIImageView()
+    let mapView = MKMapView()
     
     // 前ページでこ送られてきたデータの型
-    var selctedIndex = -1
+    var selectedIndex = -1
     var selectedPlace:String!
     var selectedDate:String!
     var selectedperson:String!
     var selectedcomment:String!
     var selectedURL:String!
+    var selectedLanditude:Double!
+    var selectedLongitude:Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +62,7 @@ class wentShowViewController: UIViewController {
         
         // datePickerのインスタンス化
         dateText = UITextField()
-        
+
         //スクリーンのサイズ取得
         screenWidth = UIScreen.main.bounds.size.width
         screenHeight = UIScreen.main.bounds.size.height
@@ -110,6 +116,7 @@ class wentShowViewController: UIViewController {
         imageView.backgroundColor = .white
         imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 250, width: screenWidth - 40, height: imageViewHeight)
         
+        mapView.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + persontextfieldHeight + detailTextViewHeight + imageViewHeight + 300, width: screenWidth - 40, height: 300)
 
         
         
@@ -125,11 +132,12 @@ class wentShowViewController: UIViewController {
         scrollView.addSubview(detailTextView)
         scrollView.addSubview(picLabel)
         scrollView.addSubview(imageView)
+        scrollView.addSubview(mapView)
         scrollView.backgroundColor = UIColor(hex: "FFE3A3")
 
         
         // UIScrollViewのコンテンツのサイズを指定
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 550)
         
         // ビューに追加
         self.view.addSubview(scrollView)
@@ -140,56 +148,77 @@ class wentShowViewController: UIViewController {
     //画面が現れる時に表示
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//
-//        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
-//        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
-//    }
+
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
+        
         
         placeTextField.text = selectedPlace
         dateText.text = selectedDate
         personTextField.text = selectedperson
         detailTextView.text = selectedcomment
         
+        resultLatitude = selectedLanditude
+        resultLongitude = selectedLongitude
+        
         // TODO:イメージビューを　StringからImageViewにする
         // 複数表示を可能にする
         // imageView.image = selectedURL
+        // ピンをセットするファンクションの呼び出し
+        setMapCenter()
+        print("緯度:\(resultLatitude)")
+        print("経度:\(resultLatitude)")
+    }
+
+    //検索結果をもとに地図中央にピンをセット
+    func setMapCenter(){
+        //中心となる場所（検索ワード）の座標オブジェクトを作成
+        let coodinate = CLLocationCoordinate2DMake(selectedLanditude, selectedLongitude)
         
-    
-    
+        //縮尺を設定
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        
+        //範囲オブジェクトを作成
+        let region = MKCoordinateRegion(center: coodinate, span: span)
+        
+        //MapViewに範囲オブジェクトを設置
+        mapView.setRegion(region, animated: true)
+        
+        //ピンオブジェクトを作成
+        let centerPin = MKPointAnnotation()
+        
+        //ピンの座標を設定
+        centerPin.coordinate = coodinate
+        
+        //タイトル、サブタイトルを設定
+        centerPin.title = placeTextField.text
+        centerPin.subtitle = personTextField.text
+        
+        //ピンを地図上に追加
+        mapView.addAnnotation(centerPin)
+        
+    }
 }
 
-
-
-
-//UIScrollViewの拡張
-//extension UIScrollView {
-//    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.endEditing(true)
-//        print("touchesBegan")
-//    }
-//}
-
 //キーボード関連の関数をまとめる。
-//extension wentShowViewController{
-//
-//    //キーボードが表示された時に呼ばれる
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        let insertHeight:CGFloat = 250
-//        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
-//        let offset = CGPoint(x: 0, y: insertHeight)
-//        scrollView.setContentOffset(offset, animated: true)
-//        print("スクリーンのサイズをキーボードの高さ分伸ばし伸ばした分動かす。")
-//    }
-//
-//    //キーボードが閉じる時に呼ばれる
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
-//        print("元の大きさへ")
-//    }
-//
-//
-//    @objc func closeKeybord(_ sender:Any){
-//        self.view.endEditing(true)
-//    }
+extension wentShowViewController{
+
+    //キーボードが表示された時に呼ばれる
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let insertHeight:CGFloat = 250
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
+        let offset = CGPoint(x: 0, y: insertHeight)
+        scrollView.setContentOffset(offset, animated: true)
+    }
+
+    //キーボードが閉じる時に呼ばれる
+    @objc func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 340)
+    }
+
+
+    @objc func closeKeybord(_ sender:Any){
+        self.view.endEditing(true)
+    }
 }
 
