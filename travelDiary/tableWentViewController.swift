@@ -17,8 +17,6 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
     var screenWidth:CGFloat!
     var screenHeight:CGFloat!
     
-    // DBのデータを呼び出す
-    let wentDetail = WentDetail()
     
     // セグエを通ってデータを送るためのへ変数
     var selectedIndex = -1
@@ -27,8 +25,12 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
     var selectedPerson:String!
     var selectedComment:String!
     var selectedURL:String!
+    var selectedLanditude:Double!
+    var selectedLongitude:Double!
     
-
+    // DBのデータを呼び出す
+    let wentDetail = WentDetail()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +41,7 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         // デリゲートの選択
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.reloadData()
         
         //スクリーンのサイズ取得
         screenWidth = UIScreen.main.bounds.size.width
@@ -62,6 +65,12 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // テーブルビューが読み込まれるたびに、データを読み込む
+        tableView.reloadData()
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -73,6 +82,8 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = wentTableViewCell()
+        // セルの中に矢印
+        cell.accessoryType = .disclosureIndicator
         
         cell.wentCell()
         
@@ -116,6 +127,9 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         // TODO: Imageに関して挿入できるようにする
         selectedURL = (wentDetail.wentDetail[indexPath.row]["imageURL"] as! String)
         
+        selectedLanditude = (wentDetail.wentDetail[indexPath.row]["landitude"] as! Double)
+        selectedLongitude = (wentDetail.wentDetail[indexPath.row]["longitude"] as! Double)
+        
         // セグエのま名前を指定する
         performSegue(withIdentifier: "wentData", sender: nil)
     }
@@ -123,13 +137,14 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
     // セグエを通って移動する時発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let wesVC = segue.destination as! wentShowViewController
-        wesVC.selctedIndex = selectedIndex
+        wesVC.selectedIndex = selectedIndex
         wesVC.selectedPlace = selectedPlace
         wesVC.selectedDate = selectedDate
         wesVC.selectedperson = selectedPerson
         wesVC.selectedcomment = selectedComment
-        wesVC.selectedURL = selectedURL
-        
+//        wesVC.selectedURL = selectedURL
+        wesVC.selectedLanditude = selectedLanditude
+        wesVC.selectedLongitude = selectedLongitude
     }
 
 }

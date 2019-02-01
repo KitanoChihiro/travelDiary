@@ -36,7 +36,6 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // DBからデータを取得して表示
         wantDetail.readAll()
         print(wantDetail.wantDetail)
@@ -44,6 +43,7 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         // デリゲートの選択
         tableView.delegate = self
         tableView.dataSource = self
+
         
         //スクリーンのサイズ取得
         screenWidth = UIScreen.main.bounds.size.width
@@ -67,6 +67,12 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // テーブルビューが読み込まれるたびに、データを読み込む
+        tableView.reloadData()
+    }
+    
     // 何件表示するか
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -76,7 +82,6 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
     
     // セルの内容を決める
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("こんにちは")
         
         // カスタムセルのインスタンス化
         var cell = WantTableCellTableViewCell()
@@ -139,6 +144,7 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
     // セグエを通って移動する時発動
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let wsVC = segue.destination as! WantShowViewController
+        print("セルが選択されました")
         
         wsVC.selectedIndex = selectedIndex
         wsVC.selectedPlace = selectedPlace
