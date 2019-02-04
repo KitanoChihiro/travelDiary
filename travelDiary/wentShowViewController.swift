@@ -169,6 +169,13 @@ class wentShowViewController: UIViewController {
         print("緯度:\(resultLatitude)")
         print("経度:\(resultLatitude)")
     }
+    
+    //画面が消える時に呼ばれる
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillHideNotification,object: nil)
+    }
 
     //検索結果をもとに地図中央にピンをセット
     func setMapCenter(){
@@ -209,6 +216,7 @@ extension wentShowViewController{
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
         let offset = CGPoint(x: 0, y: insertHeight)
         scrollView.setContentOffset(offset, animated: true)
+        
     }
 
     //キーボードが閉じる時に呼ばれる
