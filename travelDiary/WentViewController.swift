@@ -41,6 +41,8 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     
     // UIImageViewのインスタンス化
     var imageView = UIImageView()
+    var leftImageView = UIImageView()
+    var rightImageView = UIImageView()
     
     
     // インスタカメラロール
@@ -48,12 +50,15 @@ class WentViewController: UIViewController , UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        keybord()
         
         let placeTextFieldHeight:CGFloat = 50
         let datePickerViewHeight:CGFloat = 130
         let persontextfieldHeight:CGFloat = 50
         let detailTextViewHeight:CGFloat = 120
         let imageViewHeight:CGFloat = 400
+        
+        
         
         // UIScrollVIewのインスタンス化
         scrollView = UIScrollView()
@@ -112,8 +117,18 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 300, width: screenWidth - 40, height: imageViewHeight)
         
+        leftImageView.frame = CGRect(x: -100, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 300, width: screenWidth - 40, height: imageViewHeight)
+        
+        imageView.backgroundColor = .white
+        leftImageView.backgroundColor = .white
+        rightImageView.backgroundColor = .white
+        
+        
+        
         // イメージサイズごとにviewのサイズを変更する
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
+        leftImageView.contentMode = UIView.ContentMode.scaleAspectFit
+        rightImageView.contentMode = UIView.ContentMode.scaleAspectFit
         
         
         // 写真追加のボタンのプロパティ
@@ -145,7 +160,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         scrollView.backgroundColor = UIColor(hex: "FFE3A3")
         
         // UIScrollViewのコンテンツのサイズを指定
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 490)
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 520)
         
         
         // インスタライクなカメラロール
@@ -197,7 +212,13 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         print(resultLongitude)
     }
     
-    
+    //画面が消える時に呼ばれる
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillHideNotification,object: nil)
+    }
+ 
     // 写真選択のボタンが押されたら
     @objc func chooseBtn(_ sender: UIButton) {
         let picker = YPImagePicker()
@@ -257,6 +278,12 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         config.colors.tintColor = .blue
         // 一回の選択で選べる枚数の制限
         config.library.maxNumberOfItems = 20
+        // 下のバーカメラとライブラリの選択を隠す
+        config.hidesBottomBar = true
+        // カメラモードオフ
+        config.screens = [.library]
+        // フィルターなし
+        config.showsFilters = false
         //上記設定
         YPImagePickerConfiguration.shared = config
         
@@ -283,7 +310,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         let wentDetail = WentDetail()
         
         // データの書き込み
-        wentDetail.create(place: placeTextField.text, date: datePicker.date, person: personTextField.text, comment: detailTextView.text, imageURL: "path2", landitude: resultLatitude, longitude: resultLongitude, created: Date())
+        wentDetail.create(place: placeTextField.text, date: datePicker.date, person: personTextField.text, comment: detailTextView.text, imageName: "path2", landitude: resultLatitude, longitude: resultLongitude, created: Date())
         // DB関係の関数呼び出し
         wentDetail.readAll()
         
@@ -296,8 +323,10 @@ class WentViewController: UIViewController , UITextFieldDelegate{
             //アラートが消えるのと画面遷移が重ならないように0.5秒後に画面遷移するようにしてる
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 // 0.5秒後に実行したい処理
-//                self.performSegue(withIdentifier: "backHomeSegue", sender: nil)
-                self.tabBarController?.selectedIndex = 1;
+                // tabで繊維先を指定している
+                if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController  {
+                    tabvc.selectedIndex = 1
+                }
             }
         }
         )
@@ -309,10 +338,6 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         print("結果\(resultLatitude)")
         print("結果\(resultLongitude)")
     }
-//    func myMessage(){
-//        self.dismiss(animated: true, completion: nil)
-//        print("戻ります")
-//    }
 }
 
 
@@ -326,7 +351,6 @@ extension UIScrollView {
 
 //キーボード関連の関数をまとめる。
 extension WentViewController{
-    
     //キーボードが表示された時に呼ばれる
     @objc func keyboardWillShow(notification: NSNotification) {
         let insertHeight:CGFloat = 260
@@ -349,10 +373,6 @@ extension WentViewController{
         // 閉じるボタン
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action:#selector(self.closeKeybord(_:)))
         kbToolBar.items = [spacer, commitButton]
-        placeTextField.inputAccessoryView = kbToolBar
-        personTextField.inputAccessoryView = kbToolBar
-        detailTextView.inputAccessoryView = kbToolBar
-        
     }
     
     
@@ -361,51 +381,13 @@ extension WentViewController{
     }
 }
 
-//画像をパスで保存するための関数
-extension ViewController{
-    //画像を保存するためのPathを生成
-    func getDocumentsURL()->NSURL{
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        print("memo:",documentsURL)
-        return documentsURL! as NSURL
-    }
-    //Pathの最後に画像の名前を追加
-    func fileInDocumentsDirectory(filename: String)->String{
-        let fileURL = getDocumentsURL().appendingPathComponent(filename)
-        print("memo:",fileURL!)
-        return fileURL!.path
-    }
-    //画像の保存
-    func saveImage(image: UIImage, path: String)->Bool{
-        let pngImageData = image.pngData()
-        print("memo:path",path)
-        do {
-            try pngImageData!.write(to: URL(string: path)!, options: .atomic)
-        }catch{
-            print("memo:saveImage error is \(error)")
-            return false
-        }
-        return true
-    }
-    //画像のロード
-    func loadImageFromPath(path: String)->UIImage?{
-        print("memo:画像のロード",path)
-        let image = UIImage(contentsOfFile: path)
-        if image == nil{
-            print("missing image at: \(path)")
-        }
-        return image
-    }
-}
-
-
 
 class WentDetail: Object {
     @objc dynamic var place = String()
     @objc dynamic var date = Date()
     @objc dynamic var person = String()
     @objc dynamic var comment = String()
-    @objc dynamic var imageURL = String()
+    @objc dynamic var imageName = ""
     @objc dynamic var landitude = Double()
     @objc dynamic var longitude = Double()
     @objc dynamic var created:Date = Date()
@@ -414,7 +396,7 @@ class WentDetail: Object {
     var wentDetail = [NSDictionary]()
     
     // DBに登録する処理
-    func create(place:String, date:Date, person:String, comment:String, imageURL:String, landitude:Double, longitude:Double, created:Date){
+    func create(place:String, date:Date, person:String, comment:String, imageName:String, landitude:Double, longitude:Double, created:Date){
         
         let realm = try!Realm()
         
@@ -422,11 +404,12 @@ class WentDetail: Object {
             
             // インスタンス化
             let wentDetail = WentDetail()
+            
             wentDetail.place = place
             wentDetail.date = date
             wentDetail.person = person
             wentDetail.comment = comment
-            wentDetail.imageURL = imageURL
+            wentDetail.imageName = imageName
             wentDetail.landitude = landitude
             wentDetail.longitude = longitude
             wentDetail.created = created
@@ -442,13 +425,14 @@ class WentDetail: Object {
     func readAll(){
         self.wentDetail = []
         
+        
         let realm = try! Realm()
         var wentDetail = realm.objects(WentDetail.self)
         // ascending true→古いもの順　false→新しいもの順
         wentDetail = wentDetail.sorted(byKeyPath: "created", ascending: false)
         
         for value in wentDetail{
-            let detail = ["place":value.place, "date":value.date, "person":value.person, "comment":value.comment, "imageURL":value.imageURL, "landitude":value.landitude, "longitude":value.longitude, "created":value.created] as NSDictionary
+            let detail = ["place":value.place, "date":value.date, "person":value.person, "comment":value.comment, "imageName":value.imageName, "landitude":value.landitude, "longitude":value.longitude, "created":value.created] as NSDictionary
             
             self.wentDetail.append(detail)
         }
@@ -461,6 +445,20 @@ class WentDetail: Object {
             realm.delete(realm.objects(WentDetail.self))
         }
     }
-    
-    
+}
+// キーボードの関数
+extension ViewController{
+    func keyboad(){
+        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        kbToolBar.barStyle = UIBarStyle.default
+        kbToolBar.sizeToFit()
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        // 閉じるボタン
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action:#selector(self.closeKeybord(_:)))
+        kbToolBar.items = [spacer, commitButton]
+//        todoTextField.inputAccessoryView = kbToolBar
+    }
+    @objc func closeKeybord(_ sender:Any){
+        self.view.endEditing(true)
+    }
 }

@@ -208,8 +208,25 @@ class WantViewController: UIViewController {
         wantDetail.readAll()
         
         print(wantDetail.wantDetail)
-        print("ボタン押した")
+        // 決定ボタンがあおされたらアラートを表示する
+        let alertController = UIAlertController(title: "登録完了！", message: "ホーム画面に戻ります", preferredStyle: UIAlertController.Style.alert)
         
+        // アラートにOKnボタンを追加
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+            // アラートが消えるのと画面繊維が重なって動作しないように。、0.5ぼ秒後に遷移する
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                // 0.5秒後の画面繊維先を指定をする（tabで遷移先を指定している）
+                if let tabVC = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
+                    tabVC.selectedIndex = 1
+                }
+            }
+        })
+        // アラートに上記の動作を追加する
+        alertController.addAction(okAction)
+        // アラートを表示する
+        present(alertController, animated: true, completion: nil)
+        
+        print("ボタン押した")
     }
 }
 

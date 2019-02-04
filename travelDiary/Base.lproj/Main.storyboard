@@ -113,13 +113,14 @@
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Smb-mx-hTj"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CzJ-2N-JYl"/>
                     <connections>
                         <segue destination="AeR-Hf-eeK" kind="show" identifier="wentData" id="mMW-i6-YJV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wri-eA-Pgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4158" y="1877"/>
+            <point key="canvasLocation" x="5096.8000000000002" y="1876.9115442278862"/>
         </scene>
         <!--Want View Controller-->
         <scene sceneID="GOf-ij-JVB">
@@ -155,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="4802" y="-1194"/>
         </scene>
-        <!--Diary-->
+        <!--Table Want View Controller-->
         <scene sceneID="RNJ-yT-FQx">
             <objects>
                 <viewController storyboardIdentifier="wantTVC" id="w3t-1U-eAO" customClass="tableWantViewController" customModule="travelDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -165,14 +166,14 @@
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="yUP-r3-N4A"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Diary" image="icons8-book-34.png" selectedImage="icons8-literature-34.png" id="aU3-6c-15C"/>
+                    <navigationItem key="navigationItem" id="uYu-gr-RTa"/>
                     <connections>
                         <segue destination="l7P-Ee-ggS" kind="show" identifier="wantData" id="TWQ-No-adF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qak-rg-twc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5096.8000000000002" y="1011.544227886057"/>
+            <point key="canvasLocation" x="6036" y="1011.544227886057"/>
         </scene>
         <!--Want Show View Controller-->
         <scene sceneID="tuL-yN-TNb">
@@ -187,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTG-EO-Cdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6080.8000000000002" y="1011.544227886057"/>
+            <point key="canvasLocation" x="7020" y="1011.544227886057"/>
         </scene>
         <!--Select Table View Controller-->
         <scene sceneID="Ygj-lg-hg0">
@@ -288,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cb7-Bi-y8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5142" y="1877"/>
+            <point key="canvasLocation" x="6080.8000000000002" y="1876.9115442278862"/>
         </scene>
         <!--Item-->
         <scene sceneID="0bu-uI-EG1">
@@ -312,7 +313,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="FCn-fI-joZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="er6-2U-KJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="sfq-e9-mS1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="yaH-XL-yA0"/>
@@ -327,6 +327,7 @@
                         <segue destination="fJm-TK-Tvz" kind="relationship" relationship="viewControllers" id="BME-Sx-HMk"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="er6-2U-KJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1270" y="17"/>
         </scene>
