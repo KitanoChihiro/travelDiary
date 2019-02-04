@@ -78,6 +78,7 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         return wentDetail.wentDetail.count
     }
     
+    
     // TODO: セルの設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -106,6 +107,7 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
+    
     
     // セルが選択された時に行う処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -146,4 +148,10 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         // データを渡す
         self.present(wesVC, animated: true, completion: nil)
     }
+    // セルをスライドして消去する
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        wentDetail.wentDetail.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 }
+

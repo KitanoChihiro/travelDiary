@@ -155,6 +155,10 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         
         // データを渡す
         self.present(wsVC, animated: true, completion: nil)
-
+    }
+    // セルをスライドして消去する
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        wantDetail.wantDetail.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
 }
