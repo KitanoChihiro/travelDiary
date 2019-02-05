@@ -143,8 +143,8 @@ class wentShowViewController: UIViewController {
         self.view.addSubview(scrollView)
         
         self.navigationItem.hidesBackButton = true
-        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
-        backButton.tintColor = .black
+        let backButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        backButton.tintColor = UIColor(hex: "FDCD60")
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.leftItemsSupplementBackButton = true
     }
@@ -172,7 +172,6 @@ class wentShowViewController: UIViewController {
         // TODO:イメージビューを　StringからImageViewにする
         // 複数表示を可能にする
         // imageView.image = selectedURL
-        // ピンをセットするファンクションの呼び出し
         setMapCenter()
         print("緯度:\(resultLatitude)")
         print("経度:\(resultLatitude)")

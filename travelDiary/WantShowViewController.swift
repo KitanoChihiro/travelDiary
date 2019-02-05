@@ -163,8 +163,8 @@ class WantShowViewController: UIViewController {
         
         // Backボタンを追加
         self.navigationItem.hidesBackButton = true
-        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
-        backButton.tintColor = .black
+        let backButton = UIBarButtonItem(title: "< Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        backButton.tintColor = UIColor(hex: "FDCD60")
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.leftItemsSupplementBackButton = true
 
