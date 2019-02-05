@@ -26,7 +26,7 @@ class WantViewController: UIViewController {
     var datePickerHeight:CGFloat = 100
     var purposeHeight:CGFloat = 50
     var detailHeight:CGFloat = 150
-    var thingsHeight:CGFloat = 150
+    var thingsHeight:CGFloat = 120
     var budgetHeight:CGFloat = 45
     
     
@@ -68,15 +68,15 @@ class WantViewController: UIViewController {
         
         // 場所プロパティ
         placeLabel.text = "場所"
-        placeLabel.frame = CGRect(x: 20, y: 70, width: screenWidth - 40, height: 40)
+        placeLabel.frame = CGRect(x: 20, y: 100, width: screenWidth - 40, height: 40)
         
         placeText.backgroundColor = .white
-        placeText.frame = CGRect(x: 20, y: 112, width: screenWidth - 40, height: placetextHeight)
+        placeText.frame = CGRect(x: 20, y: 142, width: screenWidth - 40, height: placetextHeight)
         placeText.font = UIFont.systemFont(ofSize: 20)
         
         // 日付プロパティ
         dateLabel.text = "日付"
-        dateLabel.frame = CGRect(x: 20, y: placetextHeight + 117, width: screenWidth - 40, height: 40)
+        dateLabel.frame = CGRect(x: 20, y: placetextHeight + 147, width: screenWidth - 40, height: 40)
         
         datePicker.frame = CGRect(x: 20, y: placetextHeight + 159, width: screenWidth - 40, height: datePickerHeight)
         datePicker.datePickerMode = .date
@@ -130,8 +130,8 @@ class WantViewController: UIViewController {
         okBtn.addTarget(self, action: #selector(okBtn(_:)), for: .touchUpInside)
    
         // サーチボタンの設定
-        searchBtn.setTitle("場所を検索する", for: .normal)
-        searchBtn.frame = CGRect(x: 100, y: 70, width: screenWidth - 300, height: 40)
+        searchBtn.image("スクリーンショット 2019-02-05 20.03.27.png")
+        searchBtn.frame = CGRect(x: 60, y: 100, width: screenWidth - 320, height: 40)
         searchBtn.addTarget(self, action: #selector(WantViewController.goNext(_:)), for: .touchUpInside)
         
         

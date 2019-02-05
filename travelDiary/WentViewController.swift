@@ -47,9 +47,14 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     
     // インスタカメラロール
     var willPostImage:UIImage!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        placeTextField.text = ""
+        personTextField.text = ""
+        detailTextView.text = ""
+        
         keybord()
         
         let placeTextFieldHeight:CGFloat = 50
@@ -75,17 +80,17 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         // 場所labelのプロパティ
         placeLabel.text = "場所"
-        placeLabel.frame = CGRect(x: 20, y: 70, width: screenWidth - 40, height: 40)
+        placeLabel.frame = CGRect(x: 20, y: 100, width: screenWidth - 40, height: 40)
         
         
         // 場所textプロパティ追加
         placeTextField.backgroundColor = .white
-        placeTextField.frame = CGRect(x: 20, y: 112, width: screenWidth - 40, height: placeTextFieldHeight)
+        placeTextField.frame = CGRect(x: 20, y: 142, width: screenWidth - 40, height: placeTextFieldHeight)
         placeTextField.font = UIFont.systemFont(ofSize: 20)
         
         // 日時labelプロパティ
-        dateLabel.text = "日時"
-        dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 117, width: screenWidth - 40, height: 40)
+        dateLabel.text = "日付"
+        dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 147, width: screenWidth - 40, height: 40)
         
         // datePickerのプロパティ
         datePicker.frame = CGRect(x: 20, y: placeTextFieldHeight + 159, width: screenWidth - 40, height: datePickerViewHeight)
@@ -132,10 +137,10 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         
         // 写真追加のボタンのプロパティ
-        chooseBtn.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 258, width: screenWidth - 60, height: 40)
+        chooseBtn.frame = CGRect(x: 60, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 258, width: screenWidth - 320, height: 40)
         // ボタンのファンクションの追加(YPImagePickerの追加)
         chooseBtn.addTarget(self, action: #selector(chooseBtn(_:)), for: .touchUpInside)
-        chooseBtn.setTitle("写真の追加する", for: .normal)
+        chooseBtn.image("スクリーンショット 2019-02-05 20.03.28.png")
         
         // 決定ボタンのプロパティ
         decideBtn.frame = CGRect(x: 110, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + imageViewHeight + 310, width: screenWidth - 200, height: 40)
@@ -179,8 +184,9 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         // searchPlaceの設定
         searchPlace.addTarget(self, action: #selector(WentViewController.goNext(_:)), for: .touchUpInside)
-        searchPlace.setTitle("場所を検索する", for: .normal)
-        searchPlace.frame = CGRect(x: 100, y: 70, width: screenWidth - 300, height: 40)
+//        searchPlace.setTitle("場所を検索する", for: .normal)
+        searchPlace.image("スクリーンショット 2019-02-05 20.03.27.png")
+        searchPlace.frame = CGRect(x: 60, y: 100, width: screenWidth - 320, height: 40)
         
         // ビューに追加
         self.view.addSubview(scrollView)
@@ -188,10 +194,10 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
     }
     
-//    // サーチボタンの設定
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//    }
+    //    // サーチボタンの設定
+    //    override func didReceiveMemoryWarning() {
+    //        super.didReceiveMemoryWarning()
+    //    }
     // サーチボタンを押したらジオコーディングの画面に遷移する
     @objc func goNext(_ sender: UIButton) {
         // selectorで呼び出す場合Swift4からは「@objc」をつける。
@@ -202,7 +208,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     //画面が現れる時に表示
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
         
@@ -218,7 +224,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillHideNotification,object: nil)
     }
- 
+    
     // 写真選択のボタンが押されたら
     @objc func chooseBtn(_ sender: UIButton) {
         let picker = YPImagePicker()
@@ -292,7 +298,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     @objc func okBtn(_ sender: Any) {
         
         // 選択した画像と名前の配列を作る
-
+        
         // ↓この関数をfor文で、回す
         //保存する用のパス
         //        let path = "file://" + fileInDocumentsDirectory(filename: "")
@@ -334,7 +340,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         alertController.addAction(okAction)
         //アラートを表示する
         present(alertController, animated: true, completion: nil)
-
+        
         print("結果\(resultLatitude)")
         print("結果\(resultLongitude)")
     }
@@ -456,7 +462,7 @@ extension ViewController{
         // 閉じるボタン
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action:#selector(self.closeKeybord(_:)))
         kbToolBar.items = [spacer, commitButton]
-//        todoTextField.inputAccessoryView = kbToolBar
+        //        todoTextField.inputAccessoryView = kbToolBar
     }
     @objc func closeKeybord(_ sender:Any){
         self.view.endEditing(true)
