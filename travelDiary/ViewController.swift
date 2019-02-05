@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     // スクリーンのサイズを入れる変数を宣言
     var screenWidth:CGFloat!
     var screenHeight:CGFloat!
+
     
     // データベースの変数
     let wantDetail = WantDetail()
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
         
         // ビューに追加の処理
         view.addSubview(resultMap)
+        
         view.backgroundColor = UIColor(hex: "FFE3A3")
     }
     
@@ -45,8 +47,26 @@ class ViewController: UIViewController {
         wantDetail.readAll()
         wentDetal.readAll()
         print(wantDetail.wantDetail)
+        setPins(details: wentDetal.wentDetail)
+        setPins(details: wantDetail.wantDetail)
+        
+    }
+    
+    // 取ってきたデータからピンをおくファンクション
+    func setPins(details: [NSDictionary]){
+        for detail in details{
+            print("details")
+            
+            let annotation = MKPointAnnotation()
+            let location : CLLocationCoordinate2D = CLLocationCoordinate2DMake(detail.object(forKey: "landitude") as! CLLocationDegrees, detail.object(forKey: "longitude") as! CLLocationDegrees)
+                    annotation.coordinate = location
+                    annotation.title = detail.object(forKey: "place") as! String
+                    annotation.subtitle = detail.object(forKey: "comment") as! String
+                    resultMap.addAnnotation(annotation)
+        }
     }
 
 
 }
+
 
