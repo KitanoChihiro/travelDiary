@@ -160,7 +160,19 @@ class WantShowViewController: UIViewController {
         
         // ビューに追加
         self.view.addSubview(scrollView)
+        
+        // Backボタンを追加
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        backButton.tintColor = .black
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.leftItemsSupplementBackButton = true
 
+    }
+    
+    // 戻るボタンの処理
+    @objc func back() {
+        self.dismiss(animated: false, completion: nil)
     }
     
     //画面が現れる時に表示

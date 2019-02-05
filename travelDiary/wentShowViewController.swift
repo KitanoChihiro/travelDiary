@@ -82,7 +82,7 @@ class wentShowViewController: UIViewController {
         // テキストの入力を不可にする
         placeTextField.isEditable = false
         // 日時labelプロパティ
-        dateLabel.text = "日時"
+        dateLabel.text = "日付"
         dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 67, width: screenWidth - 40, height: 40)
         
         // dateのプロパティ
@@ -142,7 +142,15 @@ class wentShowViewController: UIViewController {
         // ビューに追加
         self.view.addSubview(scrollView)
         
-        
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        backButton.tintColor = .black
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.leftItemsSupplementBackButton = true
+    }
+    
+    @objc func back() {
+        self.dismiss(animated: false, completion: nil)
     }
     
     //画面が現れる時に表示
