@@ -55,15 +55,15 @@ class geocordingViewController: UIViewController {
 
         resultMap.frame = CGRect(x: 0, y: 200, width: screenWidth, height: screenHeight)
         goBtn.frame = CGRect(x: 20, y: 150, width: 100, height: 40)
-        goBtn.backgroundColor = .red
-        goBtn.text("検索")
+        
+        goBtn.image("スクリーンショット 2019-02-06 14.48.41.png")
         searchText.frame = CGRect(x: 20, y: 80, width: screenWidth - 40, height: 40)
         searchText.backgroundColor = .white
         latitudeLabel.frame = CGRect(x: 20, y: 250, width: 100, height: 40)
         longitudeLabel.frame = CGRect(x: 230, y: 250, width: 100, height: 40)
         backBtn.frame = CGRect(x: 200, y: 150, width: 100, height: 40)
-        backBtn.backgroundColor = .blue
-        backBtn.text("戻る")
+        
+        backBtn.image("スクリーンショット 2019-02-06 14.48.42.png")
         view.backgroundColor = UIColor(hex: "FFE3A3")
         
     
