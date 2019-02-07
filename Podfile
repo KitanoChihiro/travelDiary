@@ -10,9 +10,10 @@ target 'travelDiary' do
   # Pods for sampleFontAwesome
   #使いたいライブラリのリストアップ
   pod 'FontAwesome.swift'
-  pod 'YPImagePicker'
+ 
+  pod 'YRCoverFlowLayout'
   
-  
+   pod 'YPImagePicker'
   pod 'RealmSwift'
   use_frameworks!
 
