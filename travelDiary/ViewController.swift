@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
     
     var resultMap:MKMapView!
     // スクリーンのサイズを入れる変数を宣言
@@ -20,13 +20,14 @@ class ViewController: UIViewController {
     
     // データベースの変数
     let wantDetail = WantDetail()
-    let wentDetal = WentDetail()
+    let wentDetail = WentDetail()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         resultMap = MKMapView()
+        resultMap.delegate = self
         
         //スクリーンのサイズ取得
         screenWidth = UIScreen.main.bounds.size.width
@@ -45,9 +46,9 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // DBを呼び出して、情報を読み込む
         wantDetail.readAll()
-        wentDetal.readAll()
+        wentDetail.readAll()
         print(wantDetail.wantDetail)
-        setPins(details: wentDetal.wentDetail)
+        setPins(details: wentDetail.wentDetail)
         setPins(details: wantDetail.wantDetail)
         
     }
@@ -57,16 +58,15 @@ class ViewController: UIViewController {
         for detail in details{
             print("details")
             
-            let annotation = MKPointAnnotation()
+            var annotation = MKPointAnnotation()
             let location : CLLocationCoordinate2D = CLLocationCoordinate2DMake(detail.object(forKey: "landitude") as! CLLocationDegrees, detail.object(forKey: "longitude") as! CLLocationDegrees)
                     annotation.coordinate = location
                     annotation.title = detail.object(forKey: "place") as! String
                     annotation.subtitle = detail.object(forKey: "comment") as! String
+            
                     resultMap.addAnnotation(annotation)
         }
     }
-
-
 }
 
 

@@ -94,6 +94,14 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.wentDate.text = changeDate
         
+        // カスタムセルのイメージビューに写真を追加
+        // イメージのデータ型を変数にぶち込む
+        let imageData = (wentDetail.wentDetail[indexPath.row]["imageData"] as! Data)
+        // イメージをイメージ型に変更する
+        cell.wentImage.image = UIImage(data: imageData)
+        cell.wentImage.contentMode = UIView.ContentMode.scaleToFill
+        
+
         return cell
         
     }
@@ -139,7 +147,6 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         wesVC.selectedDate = selectedDate
         wesVC.selectedperson = selectedPerson
         wesVC.selectedcomment = selectedComment
-        //        wesVC.selectedURL = selectedURL
         wesVC.selectedLanditude = selectedLanditude
         wesVC.selectedLongitude = selectedLongitude
         
@@ -163,22 +170,3 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
 }
-    
-
-
-//let realm: Realm
-//do {
-//    realm = try Realm()
-//    realm.write() {
-//        // トランザクションを開始します。
-//
-//        // PersonalInfoデータでnameが"sato"のデータを取得します。
-//        // (1件データが登録済みの前提です)
-//        let results = realm.objects(PersonalInfo.self).filter("name='sato'")
-//
-//        // データを削除します。
-//        realm.delete(results[0])
-//    }
-//} catch {
-//    // 必要に応じて、エラー処理を行います。
-//}

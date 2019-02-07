@@ -86,9 +86,6 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         // カスタムセルのインスタンス化
         var cell = WantTableCellTableViewCell()
         
-        // セルの中に矢印
-        cell.accessoryType = .disclosureIndicator
-        
         cell.customCell()
         
         // cellラベルの中に何を表示させるか
@@ -153,8 +150,10 @@ class tableWantViewController: UIViewController,UITableViewDelegate, UITableView
         wsVC.selectedLanditude = selectedLanditude
         wsVC.selectedLongitude = selectedLongitude
         
+        let nextViewController = UINavigationController(rootViewController: wsVC)
+        
         // データを渡す
-        self.present(wsVC, animated: true, completion: nil)
+        self.present(nextViewController, animated: true, completion: nil)
     }
     // セルをスライドして消去する
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

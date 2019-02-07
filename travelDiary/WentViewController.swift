@@ -128,10 +128,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         // イメージサイズごとにviewのサイズを変更する
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
-        leftImageView.contentMode = UIView.ContentMode.scaleAspectFit
-        rightImageView.contentMode = UIView.ContentMode.scaleAspectFit
-        
-        
+
         // 写真追加のボタンのプロパティ
         chooseBtn.frame = CGRect(x: 60, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 258, width: screenWidth - 320, height: 40)
         // ボタンのファンクションの追加(YPImagePickerの追加)
@@ -309,12 +306,13 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         //        print("memo:image",image!)
         //        imageView.image = image
         
+        let imageNsData = self.imageView.image!.jpegData(compressionQuality: 0.1)
         
         // DB関数の呼び出し
         let wentDetail = WentDetail()
         
         // データの書き込み
-        wentDetail.create(place: placeTextField.text, date: datePicker.date, person: personTextField.text, comment: detailTextView.text, imageName: "path2", landitude: resultLatitude, longitude: resultLongitude, created: Date())
+        wentDetail.create(place: placeTextField.text, date: datePicker.date, person: personTextField.text, comment: detailTextView.text, imageName: "path2", landitude: resultLatitude, longitude: resultLongitude, created: Date(), imageData: imageNsData!)
         // DB関係の関数呼び出し
         wentDetail.readAll()
         
@@ -395,12 +393,13 @@ class WentDetail: Object {
     @objc dynamic var landitude = Double()
     @objc dynamic var longitude = Double()
     @objc dynamic var created:Date = Date()
+    @objc dynamic var imageData: Data? = nil
     
     // 辞書型配列としてデータを登録
     var wentDetail = [NSDictionary]()
     
     // DBに登録する処理
-    func create(place:String, date:Date, person:String, comment:String, imageName:String, landitude:Double, longitude:Double, created:Date){
+    func create(place:String, date:Date, person:String, comment:String, imageName:String, landitude:Double, longitude:Double, created:Date, imageData: Data){
         
         let realm = try!Realm()
         
@@ -417,6 +416,7 @@ class WentDetail: Object {
             wentDetail.landitude = landitude
             wentDetail.longitude = longitude
             wentDetail.created = created
+            wentDetail.imageData = imageData
             
             print(wentDetail)
             
@@ -449,7 +449,7 @@ class WentDetail: Object {
         wentDetail = wentDetail.sorted(byKeyPath: "created", ascending: false)
         
         for value in wentDetail{
-            let detail = ["place":value.place, "date":value.date, "person":value.person, "comment":value.comment, "imageName":value.imageName, "landitude":value.landitude, "longitude":value.longitude, "created":value.created] as NSDictionary
+            let detail = ["place":value.place, "date":value.date, "person":value.person, "comment":value.comment, "imageName":value.imageName, "landitude":value.landitude, "longitude":value.longitude, "created":value.created,  "imageData":value.imageData] as NSDictionary
             
             self.wentDetail.append(detail)
         }
@@ -463,19 +463,4 @@ class WentDetail: Object {
         }
     }
 }
-// キーボードの関数
-extension ViewController{
-    func keyboad(){
-        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-        kbToolBar.barStyle = UIBarStyle.default
-        kbToolBar.sizeToFit()
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-        // 閉じるボタン
-        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action:#selector(self.closeKeybord(_:)))
-        kbToolBar.items = [spacer, commitButton]
-        //        todoTextField.inputAccessoryView = kbToolBar
-    }
-    @objc func closeKeybord(_ sender:Any){
-        self.view.endEditing(true)
-    }
-}
+

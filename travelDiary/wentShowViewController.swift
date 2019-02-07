@@ -117,6 +117,9 @@ class wentShowViewController: UIViewController {
         // イメージビュープロパティ
         imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 250, width: screenWidth - 40, height: imageViewHeight)
         
+        // イメージサイズごとにviewのサイズを変更する
+        imageView.contentMode = UIView.ContentMode.scaleAspectFit
+        
         mapView.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + persontextfieldHeight + detailTextViewHeight + imageViewHeight + 300, width: screenWidth - 40, height: 300)
 
         // イメージビューを表示する

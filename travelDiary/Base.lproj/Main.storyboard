@@ -18,6 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="M7p-Bf-Sin"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="icons8-home-page-34.png" selectedImage="icons8-world-map-34 (1).png" id="BWa-Sa-E18"/>
@@ -101,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8nc-1p-XRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3986" y="-1194"/>
+            <point key="canvasLocation" x="3984.8000000000002" y="-1194.1529235382309"/>
         </scene>
         <!--Table Went View Controller-->
         <scene sceneID="AKr-Ew-pCI">
@@ -120,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wri-eA-Pgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5096.8000000000002" y="1876.9115442278862"/>
+            <point key="canvasLocation" x="5276" y="1869"/>
         </scene>
         <!--Want View Controller-->
         <scene sceneID="GOf-ij-JVB">
@@ -173,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qak-rg-twc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6036" y="1011.544227886057"/>
+            <point key="canvasLocation" x="5276" y="1012"/>
         </scene>
         <!--Want Show View Controller-->
         <scene sceneID="tuL-yN-TNb">
@@ -188,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTG-EO-Cdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7020" y="1011.544227886057"/>
+            <point key="canvasLocation" x="6401" y="1012"/>
         </scene>
         <!--Select Table View Controller-->
         <scene sceneID="Ygj-lg-hg0">
@@ -289,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cb7-Bi-y8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6080.8000000000002" y="1876.9115442278862"/>
+            <point key="canvasLocation" x="6401" y="1869"/>
         </scene>
         <!--Item-->
         <scene sceneID="0bu-uI-EG1">
@@ -322,9 +323,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Ahf-wH-b7B" kind="relationship" relationship="viewControllers" id="gzk-fw-wtk"/>
                         <segue destination="u18-q3-FKs" kind="relationship" relationship="viewControllers" id="NU5-So-vpV"/>
-                        <segue destination="fJm-TK-Tvz" kind="relationship" relationship="viewControllers" id="BME-Sx-HMk"/>
+                        <segue destination="Ahf-wH-b7B" kind="relationship" relationship="viewControllers" id="kkz-76-gtR"/>
+                        <segue destination="fJm-TK-Tvz" kind="relationship" relationship="viewControllers" id="zub-bY-Ecn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er6-2U-KJa" userLabel="First Responder" sceneMemberID="firstResponder"/>

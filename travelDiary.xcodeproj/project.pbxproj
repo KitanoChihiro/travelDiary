@@ -17,6 +17,11 @@
 		9334C3BE2201F63B007CE334 /* icons8-edit-property-34.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334C3BD2201F63A007CE334 /* icons8-edit-property-34.png */; };
 		9334C3FC220324E0007CE334 /* selectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9334C3FB220324E0007CE334 /* selectViewController.swift */; };
 		9334C3FE22034BE0007CE334 /* selectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9334C3FD22034BE0007CE334 /* selectTableViewController.swift */; };
+		9334C4222209B366007CE334 /* スクリーンショット 2019-02-05 20.03.27.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334C4212209B366007CE334 /* スクリーンショット 2019-02-05 20.03.27.png */; };
+		9334C4242209B370007CE334 /* スクリーンショット 2019-02-05 20.03.28.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334C4232209B370007CE334 /* スクリーンショット 2019-02-05 20.03.28.png */; };
+		9334C426220ABBCC007CE334 /* スクリーンショット 2019-02-06 14.48.42.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334C425220ABBCC007CE334 /* スクリーンショット 2019-02-06 14.48.42.png */; };
+		9334C428220ABBD5007CE334 /* スクリーンショット 2019-02-06 14.48.41.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334C427220ABBD5007CE334 /* スクリーンショット 2019-02-06 14.48.41.png */; };
+		9334C42A220B522F007CE334 /* スクリーンショット 2019-02-07 1.34.02.png in Resources */ = {isa = PBXBuildFile; fileRef = 9334C429220B522F007CE334 /* スクリーンショット 2019-02-07 1.34.02.png */; };
 		933855A821EE1EE600EFE057 /* tableWentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933855A721EE1EE600EFE057 /* tableWentViewController.swift */; };
 		933855AA21EE21CD00EFE057 /* wentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933855A921EE21CD00EFE057 /* wentTableViewCell.swift */; };
 		933855CC21F065A400EFE057 /* WantShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933855CB21F065A400EFE057 /* WantShowViewController.swift */; };
@@ -48,6 +53,11 @@
 		9334C3BD2201F63A007CE334 /* icons8-edit-property-34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-edit-property-34.png"; sourceTree = "<group>"; };
 		9334C3FB220324E0007CE334 /* selectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectViewController.swift; sourceTree = "<group>"; };
 		9334C3FD22034BE0007CE334 /* selectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectTableViewController.swift; sourceTree = "<group>"; };
+		9334C4212209B366007CE334 /* スクリーンショット 2019-02-05 20.03.27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "スクリーンショット 2019-02-05 20.03.27.png"; sourceTree = "<group>"; };
+		9334C4232209B370007CE334 /* スクリーンショット 2019-02-05 20.03.28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "スクリーンショット 2019-02-05 20.03.28.png"; sourceTree = "<group>"; };
+		9334C425220ABBCC007CE334 /* スクリーンショット 2019-02-06 14.48.42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "スクリーンショット 2019-02-06 14.48.42.png"; sourceTree = "<group>"; };
+		9334C427220ABBD5007CE334 /* スクリーンショット 2019-02-06 14.48.41.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "スクリーンショット 2019-02-06 14.48.41.png"; sourceTree = "<group>"; };
+		9334C429220B522F007CE334 /* スクリーンショット 2019-02-07 1.34.02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "スクリーンショット 2019-02-07 1.34.02.png"; sourceTree = "<group>"; };
 		933855A721EE1EE600EFE057 /* tableWentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableWentViewController.swift; sourceTree = "<group>"; };
 		933855A921EE21CD00EFE057 /* wentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wentTableViewCell.swift; sourceTree = "<group>"; };
 		933855CB21F065A400EFE057 /* WantShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantShowViewController.swift; sourceTree = "<group>"; };
@@ -126,9 +136,14 @@
 				935EB26A21C8CCFA00CD1F1F /* travelDiary.xcdatamodeld */,
 				9334C3BD2201F63A007CE334 /* icons8-edit-property-34.png */,
 				9334C3B92201F439007CE334 /* icons8-literature-34.png */,
+				9334C425220ABBCC007CE334 /* スクリーンショット 2019-02-06 14.48.42.png */,
+				9334C429220B522F007CE334 /* スクリーンショット 2019-02-07 1.34.02.png */,
 				9334C3B32201F2F5007CE334 /* icons8-home-page-34.png */,
 				9334C3B72201F406007CE334 /* icons8-book-34.png */,
 				9334C3B52201F389007CE334 /* icons8-world-map-34 (1).png */,
+				9334C427220ABBD5007CE334 /* スクリーンショット 2019-02-06 14.48.41.png */,
+				9334C4232209B370007CE334 /* スクリーンショット 2019-02-05 20.03.28.png */,
+				9334C4212209B366007CE334 /* スクリーンショット 2019-02-05 20.03.27.png */,
 			);
 			path = travelDiary;
 			sourceTree = "<group>";
@@ -211,13 +226,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9334C3B62201F389007CE334 /* icons8-world-map-34 (1).png in Resources */,
+				9334C42A220B522F007CE334 /* スクリーンショット 2019-02-07 1.34.02.png in Resources */,
 				9334C3BE2201F63B007CE334 /* icons8-edit-property-34.png in Resources */,
 				9334C3BA2201F439007CE334 /* icons8-literature-34.png in Resources */,
 				935EB27121C8CCFB00CD1F1F /* LaunchScreen.storyboard in Resources */,
 				9334C3B42201F2F8007CE334 /* icons8-home-page-34.png in Resources */,
+				9334C426220ABBCC007CE334 /* スクリーンショット 2019-02-06 14.48.42.png in Resources */,
 				935EB26E21C8CCFB00CD1F1F /* Assets.xcassets in Resources */,
+				9334C4242209B370007CE334 /* スクリーンショット 2019-02-05 20.03.28.png in Resources */,
+				9334C428220ABBD5007CE334 /* スクリーンショット 2019-02-06 14.48.41.png in Resources */,
 				9334C3BC2201F54F007CE334 /* icons8-hand-with-pen-34.png in Resources */,
 				9334C3B82201F406007CE334 /* icons8-book-34.png in Resources */,
+				9334C4222209B366007CE334 /* スクリーンショット 2019-02-05 20.03.27.png in Resources */,
 				935EB29A21C8E08D00CD1F1F /* 名称未設定.png in Resources */,
 				935EB26921C8CCFA00CD1F1F /* Main.storyboard in Resources */,
 			);
@@ -263,6 +283,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/YRCoverFlowLayout/YRCoverFlowLayout.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -274,6 +295,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YRCoverFlowLayout.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
