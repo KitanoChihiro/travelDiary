@@ -48,6 +48,8 @@ class wentShowViewController: UIViewController {
     var selectedLanditude:Double!
     var selectedLongitude:Double!
     
+    var imageData: Data!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -112,14 +114,13 @@ class wentShowViewController: UIViewController {
         picLabel.text = "写真"
         picLabel.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 208, width: screenWidth - 40, height: 40)
         
-        
-        imageView.backgroundColor = .white
+        // イメージビュープロパティ
         imageView.frame = CGRect(x: 20, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + 250, width: screenWidth - 40, height: imageViewHeight)
         
         mapView.frame = CGRect(x: 20, y: placeTextFieldHeight + datePickerViewHeight + persontextfieldHeight + detailTextViewHeight + imageViewHeight + 300, width: screenWidth - 40, height: 300)
 
-        
-        
+        // イメージビューを表示する
+        self.imageView.image = UIImage(data: imageData)
         
         // 各オブジェクトをビューに追加
         scrollView.addSubview(placeLabel)

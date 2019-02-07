@@ -83,8 +83,6 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = wentTableViewCell()
-        // セルの中に矢印
-        cell.accessoryType = .disclosureIndicator
         
         cell.wentCell()
         
@@ -127,7 +125,7 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         selectedComment = (wentDetail.wentDetail[indexPath.row]["comment"] as! String)
         
         // TODO: Imageに関して挿入できるようにする
-        selectedURL = (wentDetail.wentDetail[indexPath.row]["imageURL"] as! String)
+//        selectedURL = (wentDetail.wentDetail[indexPath.row]["imageURL"] as! String)
         
         selectedLanditude = (wentDetail.wentDetail[indexPath.row]["landitude"] as! Double)
         selectedLongitude = (wentDetail.wentDetail[indexPath.row]["longitude"] as! Double)
@@ -145,13 +143,42 @@ class tableWentViewController: UIViewController, UITableViewDelegate, UITableVie
         wesVC.selectedLanditude = selectedLanditude
         wesVC.selectedLongitude = selectedLongitude
         
+        wesVC.imageData = (wentDetail.wentDetail[indexPath.row]["imageData"] as! Data)
+        
+        let nextViewController = UINavigationController(rootViewController: wesVC)
+        
         // データを渡す
-        self.present(wesVC, animated: true, completion: nil)
+        self.present(nextViewController, animated: true, completion: nil)
+        
+        
     }
     // セルをスライドして消去する
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        wentDetail.wentDetail.remove(at: indexPath.row)
+        
+        let wentDetail = WentDetail()
+        
         tableView.deleteRows(at: [indexPath], with: .fade)
+        wentDetail.wentDetail.remove(at: indexPath.row)
+        wentDetail.delete(created: wentDetail.wentDetail[indexPath.row]["created"] as! Date)
+        
     }
 }
+    
 
+
+//let realm: Realm
+//do {
+//    realm = try Realm()
+//    realm.write() {
+//        // トランザクションを開始します。
+//
+//        // PersonalInfoデータでnameが"sato"のデータを取得します。
+//        // (1件データが登録済みの前提です)
+//        let results = realm.objects(PersonalInfo.self).filter("name='sato'")
+//
+//        // データを削除します。
+//        realm.delete(results[0])
+//    }
+//} catch {
+//    // 必要に応じて、エラー処理を行います。
+//}
