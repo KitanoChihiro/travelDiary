@@ -68,15 +68,15 @@ class WantViewController: UIViewController {
         
         // 場所プロパティ
         placeLabel.text = "場所"
-        placeLabel.frame = CGRect(x: 20, y: 100, width: screenWidth - 40, height: 40)
+        placeLabel.frame = CGRect(x: 20, y: 80, width: screenWidth - 40, height: 40)
         
         placeText.backgroundColor = .white
-        placeText.frame = CGRect(x: 20, y: 142, width: screenWidth - 40, height: placetextHeight)
+        placeText.frame = CGRect(x: 20, y: 122, width: screenWidth - 40, height: placetextHeight)
         placeText.font = UIFont.systemFont(ofSize: 20)
         
         // 日付プロパティ
         dateLabel.text = "日付"
-        dateLabel.frame = CGRect(x: 20, y: placetextHeight + 147, width: screenWidth - 40, height: 40)
+        dateLabel.frame = CGRect(x: 20, y: placetextHeight + 127, width: screenWidth - 40, height: 40)
         
         datePicker.frame = CGRect(x: 20, y: placetextHeight + 159, width: screenWidth - 40, height: datePickerHeight)
         datePicker.datePickerMode = .date
@@ -124,14 +124,14 @@ class WantViewController: UIViewController {
         yenLastLabel.frame = CGRect(x: 370, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 347, width: screenWidth - 280, height: budgetHeight)
         
         // 決定ボタンのプロパティ
-        okBtn.setTitle("登録！", for: .normal)
+        okBtn.image("スクリーンショット 2019-02-07 1.34.02.png")
         okBtn.frame = CGRect(x: 160, y: placetextHeight + datePickerHeight + purposeHeight + detailHeight + thingsHeight + 437, width: screenWidth - 320, height: 40)
         
         okBtn.addTarget(self, action: #selector(okBtn(_:)), for: .touchUpInside)
    
         // サーチボタンの設定
         searchBtn.image("スクリーンショット 2019-02-05 20.03.27.png")
-        searchBtn.frame = CGRect(x: 60, y: 100, width: screenWidth - 320, height: 40)
+        searchBtn.frame = CGRect(x: 60, y: 80, width: screenWidth - 320, height: 40)
         searchBtn.addTarget(self, action: #selector(WantViewController.goNext(_:)), for: .touchUpInside)
         
         

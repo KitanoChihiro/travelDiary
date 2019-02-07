@@ -51,10 +51,6 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        placeTextField.text = ""
-        personTextField.text = ""
-        detailTextView.text = ""
-        
         keybord()
         
         let placeTextFieldHeight:CGFloat = 50
@@ -80,17 +76,17 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         // 場所labelのプロパティ
         placeLabel.text = "場所"
-        placeLabel.frame = CGRect(x: 20, y: 100, width: screenWidth - 40, height: 40)
+        placeLabel.frame = CGRect(x: 20, y: 80, width: screenWidth - 40, height: 40)
         
         
         // 場所textプロパティ追加
         placeTextField.backgroundColor = .white
-        placeTextField.frame = CGRect(x: 20, y: 142, width: screenWidth - 40, height: placeTextFieldHeight)
+        placeTextField.frame = CGRect(x: 20, y: 122, width: screenWidth - 40, height: placeTextFieldHeight)
         placeTextField.font = UIFont.systemFont(ofSize: 20)
         
         // 日時labelプロパティ
         dateLabel.text = "日付"
-        dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 147, width: screenWidth - 40, height: 40)
+        dateLabel.frame = CGRect(x: 20, y: placeTextFieldHeight + 127, width: screenWidth - 40, height: 40)
         
         // datePickerのプロパティ
         datePicker.frame = CGRect(x: 20, y: placeTextFieldHeight + 159, width: screenWidth - 40, height: datePickerViewHeight)
@@ -143,8 +139,8 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         chooseBtn.image("スクリーンショット 2019-02-05 20.03.28.png")
         
         // 決定ボタンのプロパティ
-        decideBtn.frame = CGRect(x: 110, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + imageViewHeight + 310, width: screenWidth - 200, height: 40)
-        decideBtn.setTitle("登録！！", for: .normal)
+        decideBtn.frame = CGRect(x: 150, y: persontextfieldHeight + datePickerViewHeight + placeTextFieldHeight + detailTextViewHeight + imageViewHeight + 310, width: screenWidth - 300, height: 40)
+        decideBtn.image("スクリーンショット 2019-02-07 1.34.02.png")
         // 決定ボタンのファンクション追加（DBに登録処理）
         decideBtn.addTarget(self, action: #selector(okBtn(_:)), for: .touchUpInside)
         
@@ -184,9 +180,8 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         
         // searchPlaceの設定
         searchPlace.addTarget(self, action: #selector(WentViewController.goNext(_:)), for: .touchUpInside)
-//        searchPlace.setTitle("場所を検索する", for: .normal)
         searchPlace.image("スクリーンショット 2019-02-05 20.03.27.png")
-        searchPlace.frame = CGRect(x: 60, y: 100, width: screenWidth - 320, height: 40)
+        searchPlace.frame = CGRect(x: 60, y: 80, width: screenWidth - 320, height: 40)
         
         // ビューに追加
         self.view.addSubview(scrollView)
@@ -208,6 +203,10 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     //画面が現れる時に表示
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        placeTextField.text = ""
+        personTextField.text = ""
+        detailTextView.text = ""
 
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
@@ -283,7 +282,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         //ナビゲーションの右側のボタン「Next」
         config.colors.tintColor = .blue
         // 一回の選択で選べる枚数の制限
-        config.library.maxNumberOfItems = 20
+//        config.library.maxNumberOfItems = 20
         // 下のバーカメラとライブラリの選択を隠す
         config.hidesBottomBar = true
         // カメラモードオフ
@@ -292,7 +291,6 @@ class WentViewController: UIViewController , UITextFieldDelegate{
         config.showsFilters = false
         //上記設定
         YPImagePickerConfiguration.shared = config
-        
     }
     
     @objc func okBtn(_ sender: Any) {
@@ -426,6 +424,19 @@ class WentDetail: Object {
             realm.add(wentDetail)
         }
     }
+    
+    // DBのデータを一件消去する処理
+    func delete(created:Date) {
+        let realm = try! Realm()
+        let results = realm.objects(WentDetail.self).filter("created == %", created)
+
+        // (3)データの削除
+        try! realm.write {
+            realm.delete(results)
+        }
+
+    }
+    
     
     // DBからデータを読み込む処理
     func readAll(){
