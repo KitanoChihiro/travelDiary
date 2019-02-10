@@ -9,6 +9,7 @@ target 'travelDiary' do
 
   # Pods for sampleFontAwesome
   #使いたいライブラリのリストアップ
+  pod 'IQKeyboardManagerSwift'
   pod 'FontAwesome.swift'
  
   pod 'YRCoverFlowLayout'

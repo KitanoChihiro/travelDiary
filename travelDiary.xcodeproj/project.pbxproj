@@ -278,6 +278,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-travelDiary/Pods-travelDiary-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -290,6 +291,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",

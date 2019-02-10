@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A7C927815524DE85EBAA2516E17AFF9"
+               BlueprintIdentifier = "70511CC6290DEF07AC96DFA7E0F53C37"
                BlueprintName = "YRCoverFlowLayout"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "YRCoverFlowLayout.framework">

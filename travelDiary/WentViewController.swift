@@ -51,7 +51,7 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        keybord()
+
         
         let placeTextFieldHeight:CGFloat = 50
         let datePickerViewHeight:CGFloat = 130
@@ -201,25 +201,12 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        placeTextField.text = ""
-        personTextField.text = ""
-        detailTextView.text = ""
-
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(notification:)),name:UIResponder.keyboardWillShowNotification,object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(notification:)),name:UIResponder.keyboardWillHideNotification,object: nil)
-        
         // 場所の検索してから入力画面に値を渡す
         placeTextField.text = resultPlace
         print(resultLatitude)
         print(resultLongitude)
     }
-    
-    //画面が消える時に呼ばれる
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillShowNotification,object: nil)
-        NotificationCenter.default.removeObserver(self,name:UIResponder.keyboardWillHideNotification,object: nil)
-    }
+
     
     // 写真選択のボタンが押されたら
     @objc func chooseBtn(_ sender: UIButton) {
@@ -292,20 +279,6 @@ class WentViewController: UIViewController , UITextFieldDelegate{
     
     @objc func okBtn(_ sender: Any) {
         
-        // 選択した画像と名前の配列を作る
-        
-        // ↓この関数をfor文で、回す
-        //保存する用のパス
-        //        let path = "file://" + fileInDocumentsDirectory(filename: "")
-        //        let result = saveImage(image: UIImage(named: "togamin.JPG")!, path: path)
-        //        //
-        //        //        //読み取る用のパス
-        //        let path2 = fileInDocumentsDirectory(filename: "togamin")
-        //        print("memo:",result)
-        //        let image = loadImageFromPath(path: path2)
-        //        print("memo:image",image!)
-        //        imageView.image = image
-        
         let imageNsData = self.imageView.image!.jpegData(compressionQuality: 0.1)
         
         // DB関数の呼び出し
@@ -351,37 +324,7 @@ extension UIScrollView {
     }
 }
 
-//キーボード関連の関数をまとめる。
-extension WentViewController{
-    //キーボードが表示された時に呼ばれる
-    @objc func keyboardWillShow(notification: NSNotification) {
-        let insertHeight:CGFloat = 260
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + insertHeight)
-        let offset = CGPoint(x: 0, y: insertHeight)
-        scrollView.setContentOffset(offset, animated: true)
-    }
-    
-    //キーボードが閉じる時に呼ばれる
-    @objc func keyboardWillHide(notification: NSNotification) {
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight + 260)
-        
-    }
-    
-    func keybord(){
-        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-        kbToolBar.barStyle = UIBarStyle.default
-        kbToolBar.sizeToFit()
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-        // 閉じるボタン
-        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action:#selector(self.closeKeybord(_:)))
-        kbToolBar.items = [spacer, commitButton]
-    }
-    
-    
-    @objc func closeKeybord(_ sender:Any){
-        self.view.endEditing(true)
-    }
-}
+
 
 
 class WentDetail: Object {

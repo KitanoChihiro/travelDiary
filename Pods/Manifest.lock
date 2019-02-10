@@ -1,5 +1,6 @@
 PODS:
   - FontAwesome.swift (1.4.9)
+  - IQKeyboardManagerSwift (6.2.0)
   - PryntTrimmerView (3.0.0)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
@@ -14,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - FontAwesome.swift
+  - IQKeyboardManagerSwift
   - RealmSwift
   - YPImagePicker
   - YRCoverFlowLayout
@@ -21,6 +23,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FontAwesome.swift
+    - IQKeyboardManagerSwift
     - PryntTrimmerView
     - Realm
     - RealmSwift
@@ -30,6 +33,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FontAwesome.swift: 7f831846e85b93d32ded5d86983804b749921760
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
@@ -37,6 +41,6 @@ SPEC CHECKSUMS:
   YPImagePicker: 5dd3814b47b1208e9c8cc8f6ef77fe90db3723b6
   YRCoverFlowLayout: 5140d299e4d80704f618de7f7e34376ebc341484
 
-PODFILE CHECKSUM: 6dbfe926b732495cecbd917fa4a685f3ab72dbc1
+PODFILE CHECKSUM: fb58fd06d6935de61969458a98096b5ec4c306fd
 
 COCOAPODS: 1.5.3
